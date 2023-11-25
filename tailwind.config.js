@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      "ubuntu": ['Ubuntu', 'sans-serif'],
+      "inter": ["Inter", "sans-serif"],
+      "railway": ["Raleway", "sans-serif"],
+    },
   },
   plugins: [],
 }
