@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -12,7 +13,7 @@ import { uploadImage } from '../../Api/imageUpload';
 import toast from 'react-hot-toast';
 const Register = () => {
     const [showPass, setShowPass] = useState(false);
-    const { createUser, updateUserProfile, signInWithGoogle, loading } = useAuth()
+    const { createUser, updateUserProfile, signInWithGoogle } = useAuth()
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate()
     const loc = useLocation();
@@ -39,9 +40,13 @@ const Register = () => {
             await updateUserProfile(name, image)
             if (user?.email) {
                 toast.success('Successfully Registered', { id: toastId })
-            };
+                navigate(loc?.state ? loc.state : '/', { replace: true })
+
+            }
         } catch (error) {
             toast.error(error.message, { id: toastId });
+            navigate('/login');
+
         }
     }
     return (
@@ -98,6 +103,7 @@ const Register = () => {
                             </div>
                             <div className='w-full'>
                                 <input type="text" {...register("captchaInput", { required: true })} placeholder='Type the Captcha above' className=" h-14  w-full mt-1 rounded-[8px] bg-white px-4 outline-none" />
+                                {errors.captchaInput?.type === 'required' && <p className='text-red-500'>Captcha validation is required</p>}
                             </div>
 
                             <button type='submit' className='btn w-full py-4 rounded-md text-lg bg-[rgba(209,160,84,0.5)] mt-5 text-white hover:bg-[rgba(209,160,84,0.7)]'>
