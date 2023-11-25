@@ -8,9 +8,10 @@ import { FcGoogle } from "react-icons/fc";
 import Lottie from "lottie-react";
 import animation from '../../assets/lottie/parcelDeliver.json'
 import toast from "react-hot-toast";
+import { getAccessToken, saveUserData } from "../../Api/Auth";
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
-    const { signIn, signInWithGoogle } = useAuth();
+    const { signIn, signInWithGoogle, logOut } = useAuth();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate()
     const loc = useLocation();
@@ -32,11 +33,14 @@ const Login = () => {
 
         try {
             //1. User Login
-            const { user } = await signIn(email, password)
-            if (user?.email) {
+            const { user } = await signIn(email, password);
+            const accessToken = await getAccessToken(user?.email)
+            if (accessToken?.success) {
                 toast.success('Successfully Logged In', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
 
+            } else {
+                logOut()
             }
         } catch (error) {
             toast.error(error.message, { id: toastId });
@@ -47,10 +51,15 @@ const Login = () => {
         
         try {
             const { user } = await signInWithGoogle();
-            if (user?.email) {
-                toast.success('Successfully Logged In', { id: toastId })
+            const accessToken = await getAccessToken(user?.email)
+            if (user?.email && accessToken?.success) {
+                const data = await saveUserData(user, 'user')
+                console.log(data);
+                toast.success('Successfully Registered', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
 
+            } else {
+                logOut()
             }
         } catch (error) {
             toast.error(error.message, { id: toastId });

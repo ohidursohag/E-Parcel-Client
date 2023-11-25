@@ -11,9 +11,10 @@ import { FcGoogle } from "react-icons/fc";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { uploadImage } from '../../Api/imageUpload';
 import toast from 'react-hot-toast';
+import { getAccessToken, saveUserData } from '../../Api/Auth';
 const Register = () => {
     const [showPass, setShowPass] = useState(false);
-    const { createUser, updateUserProfile, signInWithGoogle } = useAuth()
+    const { createUser, updateUserProfile, signInWithGoogle, logOut } = useAuth()
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate()
     const loc = useLocation();
@@ -25,6 +26,7 @@ const Register = () => {
         const name = data?.name;
         const email = data?.email;
         const password = data?.password;
+        const userRole = data?.userRole;
         const captchaInput = data?.captchaInput;
         if (!validateCaptcha(captchaInput)) {
             toast.error('Invalid Captcha,Please try again', { id: toastId });
@@ -38,14 +40,20 @@ const Register = () => {
             const image = imageUploadResponse?.data?.url;
             //3. Save username & profile photo
             await updateUserProfile(name, image)
-            if (user?.email) {
-                toast.success('Successfully Registered', { id: toastId })
-                navigate(loc?.state ? loc.state : '/', { replace: true })
+            const accessToken = await getAccessToken(user?.email)
 
+            if (accessToken?.success) {
+                // save/update user info to database
+                const data = await saveUserData(user, userRole)
+                console.log(data);
+                toast.success('Registration Successfull and Logged In', { id: toastId })
+                navigate(loc?.state ? loc.state : '/', { replace: true })
+            } else {
+                logOut()
             }
         } catch (error) {
             toast.error(error.message, { id: toastId });
-            navigate('/login');
+            // navigate('/login');
 
         }
     }
@@ -55,10 +63,16 @@ const Register = () => {
 
         try {
             const { user } = await signInWithGoogle();
-            if (user?.email) {
+            // get AccessToken 
+            const accessToken = await getAccessToken(user?.email)
+            if (accessToken?.success) {
+                const data = await saveUserData(user, 'user')
+                console.log(data);
                 toast.success('Successfully Registered', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
 
+            } else {
+                logOut()
             }
         } catch (error) {
             toast.error(error.message, { id: toastId });
@@ -100,19 +114,29 @@ const Register = () => {
 
                             </div>
 
-                            <div className='mb-5'>
-                                <label className='block mb-2 text-xl  font-medium '>
-                                    Select Image:
-                                </label>
-                                <input
-                                    className='file:mr-4 file:py-2 file:px-4  file:border-0 file:text-base file:font-semibold file:text-[#444444] file:bg-gray-300 file:rounded-none file:normal-case text-lg  file:btn'
-                                    type='file'
-                                    {...register("image", { required: true })}
-                                    accept='image/*'
-                                />
-                                {errors.image?.type === 'required' && <p className='text-red-500'>image is required</p>}
+                            <div className='mb-5 flex '>
+                                <div className=''>
+                                    <label className='block mb-2 text-xl  font-medium '>
+                                        Select Image:
+                                    </label>
+                                    <input
+                                        className='file:mr-4 file:py-2 file:px-4  file:border-0 file:text-base file:font-semibold file:text-[#444444] file:bg-gray-300 file:rounded-none file:normal-case text-lg  file:btn'
+                                        type='file'
+                                        {...register("image", { required: true })}
+                                        accept='image/*'
+                                    />
+                                    {errors.image?.type === 'required' && <p className='text-red-500'>image is required</p>}
+                                </div>
+                                <div>
+                                    <label className='block mb-2 text-xl  font-medium '>
+                                        Select Role:
+                                    </label>
+                                    <select {...register("userRole")} className='rounded-lg py-2 pl-2'>
+                                        <option value="user">User</option>
+                                        <option value="deliveryMan">Delivery Man</option>
+                                    </select>
+                                </div>
                             </div>
-
                             <div className='w-full'>
                                 <LoadCanvasTemplate />
                             </div>
