@@ -21,7 +21,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         // console.log(data);
-        const toastId = toast.loading('Logging...')
+        const toastId = toast.loading('Loginingg...')
         const email = data.email;
         const password = data.password;
         const captchaInput = data.captchaInput;
@@ -33,6 +33,20 @@ const Login = () => {
         try {
             //1. User Login
             const { user } = await signIn(email, password)
+            if (user?.email) {
+                toast.success('Successfully Logged In', { id: toastId })
+                navigate(loc?.state ? loc.state : '/', { replace: true })
+
+            }
+        } catch (error) {
+            toast.error(error.message, { id: toastId });
+        }
+    }
+    const handleLoginWithGoogle = async () => {
+        const toastId = toast.loading('logining ...')
+        
+        try {
+            const { user } = await signInWithGoogle();
             if (user?.email) {
                 toast.success('Successfully Logged In', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
@@ -90,10 +104,10 @@ const Login = () => {
                             <p className='text-lg text-[#D1A054] font-bold'>Or</p>
                             <hr className='border border-[#D1A054] flex-1' />
                         </div>
-                        <div className="cursor-pointer group border-[#D1A054]   inline-flex  w-full items-center justify-center gap-2  rounded-lg border px-4 py-3 transition-colors duration-300  hover:bg-[#D1A054]  focus:outline-none">
+                        <button onClick={handleLoginWithGoogle} className="cursor-pointer group border-[#D1A054]   inline-flex  w-full items-center justify-center gap-2  rounded-lg border px-4 py-3 transition-colors duration-300  hover:bg-[#D1A054]  focus:outline-none">
                             <FcGoogle size={26} />
                             <span className="text-lg font-medium text-[#D1A054] group-hover:text-white">Google</span>
-                        </div>
+                        </button>
                     </div>
                     <div className='lg:w-1/2'>
                         <Lottie animationData={animation} loop={true} />

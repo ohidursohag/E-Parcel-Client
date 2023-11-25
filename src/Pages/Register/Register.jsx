@@ -49,6 +49,21 @@ const Register = () => {
 
         }
     }
+
+    const handleRegisterWithGoogle = async () => {
+        const toastId = toast.loading('Registering ...')
+
+        try {
+            const { user } = await signInWithGoogle();
+            if (user?.email) {
+                toast.success('Successfully Registered', { id: toastId })
+                navigate(loc?.state ? loc.state : '/', { replace: true })
+
+            }
+        } catch (error) {
+            toast.error(error.message, { id: toastId });
+        }
+    }
     return (
         <div style={{ backgroundImage: `url(${'https://getpaidstock.com/tmp/[GetPaidStock.com]-656108bc03856.jpg'})` }} className="min-h-screen bg-cover bg-no-repeat bg-fixed bg-center flex justify-center items-center overflow-hidden">
             <div className='md:w-[80%] mx-auto min-h-[600px] bg-slate-600/70 rounded-xl backdrop-blur shadow-[10px_10px_10px_10px_rgba(0,0,0,0.25)] my-20'>
@@ -119,10 +134,10 @@ const Register = () => {
                             <p className='text-lg text-[#D1A054] font-bold'>Or</p>
                             <hr className='border border-[#D1A054] flex-1' />
                         </div>
-                        <div className="cursor-pointer group border-[#D1A054]   inline-flex  w-full items-center justify-center gap-2  rounded-lg border px-4 py-3 transition-colors duration-300  hover:bg-[#D1A054]  focus:outline-none">
+                        <button onClick={handleRegisterWithGoogle} className="cursor-pointer group border-[#D1A054]   inline-flex  w-full items-center justify-center gap-2  rounded-lg border px-4 py-3 transition-colors duration-300  hover:bg-[#D1A054]  focus:outline-none">
                             <FcGoogle size={26} />
                             <span className="text-lg font-medium text-[#D1A054] group-hover:text-white">Google</span>
-                        </div>
+                        </button>
                     </div>
                     <div className='lg:w-1/2'>
                         <Lottie animationData={animation} loop={true} />
