@@ -17,14 +17,16 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import AllDeliveryMen from "../Pages/Dashboard/Admin/AllDeliveryMen";
 import MyDeliveryList from "../Pages/Dashboard/DeliveryMan/MyDeliveryList";
 import MyReviews from "../Pages/Dashboard/DeliveryMan/MyReviews";
+import DeliveryMenRoute from "./DeliveryMenRoute";
+import AdminRoute from "./AdminRoute";
 
 const myCreatedRoutes = createBrowserRouter([
    {
       path: '/',
       element: <MainLayout />,
-      errorElement: <ErrorPage/>,
+      errorElement: <ErrorPage />,
       children: [
-         {index: true, element: <Home />},
+         { index: true, element: <Home /> },
       ]
    },
    { path: '/login', element: <Login /> },
@@ -53,35 +55,31 @@ const myCreatedRoutes = createBrowserRouter([
          },
          {
             path: 'admin/statistics',
-            element: <PrivateRoute><AdminStatistics /></PrivateRoute>
+            element: <PrivateRoute><AdminRoute><AdminStatistics /></AdminRoute></PrivateRoute>
          },
          {
             path: 'admin/all-parcels',
-            element: <PrivateRoute><AllParcel /></PrivateRoute>
-         },
-         {
-            path: 'admin/all-parcels',
-            element: <PrivateRoute><AllParcel /></PrivateRoute>
+            element: <PrivateRoute><AdminRoute><AllParcel /></AdminRoute></PrivateRoute>
          },
          {
             path: 'admin/all-users',
-            element: <PrivateRoute><AllUsers /></PrivateRoute>
+            element: <PrivateRoute><AdminRoute><AllUsers /></AdminRoute></PrivateRoute>
          },
          {
             path: 'admin/all-delivery-men',
-            element: <PrivateRoute><AllDeliveryMen /></PrivateRoute>
+            element: <PrivateRoute><AdminRoute><AllDeliveryMen /></AdminRoute></PrivateRoute>
          },
          {
             path: 'deliveryMan/statistics',
-            element: <PrivateRoute><DeliveryManStatistics /></PrivateRoute>
+            element: <PrivateRoute><DeliveryMenRoute><DeliveryManStatistics /></DeliveryMenRoute></PrivateRoute>
          },
          {
             path: 'deliveryMan/my-delivery-list',
-            element: <PrivateRoute><MyDeliveryList /></PrivateRoute>
+            element: <PrivateRoute><DeliveryMenRoute><MyDeliveryList /></DeliveryMenRoute></PrivateRoute>
          },
          {
             path: 'deliveryMan/my-reviews',
-            element: <PrivateRoute><MyReviews /></PrivateRoute>
+            element: <PrivateRoute><DeliveryMenRoute><MyReviews /></DeliveryMenRoute></PrivateRoute>
          },
       ]
    }
