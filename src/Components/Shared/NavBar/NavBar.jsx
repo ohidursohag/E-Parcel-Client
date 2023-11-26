@@ -7,18 +7,20 @@ import NavLinks from "./NavLinks";
 
 const NavBar = () => {
    return (
-      <Container>
-         <div className="flex justify-between items-center relative py-2">
-            <Logo />
-            <div className="hidden items-center gap-10 md:flex">
-               <NavLinks />
+      <div className="fixed w-full bg-white/30 backdrop-blur-sm">
+         <Container>
+            <div className="flex justify-between items-center relative py-2">
+               <Logo />
+               <div className="hidden items-center gap-10 md:flex">
+                  <NavLinks />
+               </div>
+               <div className="flex items-center gap-2">
+                  <button className='text-gray-600  underline font-semibold text-lg '><IoNotifications size={30} /></button>
+                  <DropDown />
+               </div>
             </div>
-            <div className="flex items-center gap-2">
-               <button className='text-gray-600  underline font-semibold text-lg '><IoNotifications size={30} /></button>
-               <DropDown />
-            </div>
-         </div>
-      </Container>
+         </Container>
+      </div>
    )
 }
 export default NavBar;

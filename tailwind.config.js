@@ -12,7 +12,7 @@ export default {
       "railway": ["Raleway", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 
 
