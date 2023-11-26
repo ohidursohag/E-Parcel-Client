@@ -2,8 +2,8 @@
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import animation from '../../assets/lottie/parcelDeliver.json'
 import Lottie from 'lottie-react';
+import animation from '../../assets/lottie/parcelDeliver.json'
 import useAuth from '../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';

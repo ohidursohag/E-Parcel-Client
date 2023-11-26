@@ -5,6 +5,18 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import ErrorPage from "../Pages/Error/ErrorPage";
+import BookAParcel from "../Pages/Dashboard/User/BookAParcel";
+import MyParcels from "../Pages/Dashboard/User/MyParcels";
+import Profile from "../Pages/Dashboard/Common/Profile";
+import PrivateRoute from "./PrivateRoute";
+import UserStatistics from "../Pages/Dashboard/User/UserStatistics";
+import AdminStatistics from "../Pages/Dashboard/Admin/AdminStatistics";
+import DeliveryManStatistics from "../Pages/Dashboard/DeliveryMan/DeliveryManStatistics";
+import AllParcel from "../Pages/Dashboard/Admin/AllParcel";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+import AllDeliveryMen from "../Pages/Dashboard/Admin/AllDeliveryMen";
+import MyDeliveryList from "../Pages/Dashboard/DeliveryMan/MyDeliveryList";
+import MyReviews from "../Pages/Dashboard/DeliveryMan/MyReviews";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -19,9 +31,58 @@ const myCreatedRoutes = createBrowserRouter([
    { path: '/register', element: <Register /> },
    {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: <PrivateRoute>
+         <DashboardLayout />
+      </PrivateRoute>,
       children: [
-         
+         {
+            path: 'profile',
+            element: <PrivateRoute><Profile /></PrivateRoute>
+         },
+         {
+            path: 'user/parcel-booking',
+            element: <PrivateRoute><BookAParcel /></PrivateRoute>
+         },
+         {
+            path: 'user/statistics',
+            element: <PrivateRoute><UserStatistics /></PrivateRoute>
+         },
+         {
+            path: 'user/my-parcels',
+            element: <PrivateRoute><MyParcels /></PrivateRoute>
+         },
+         {
+            path: 'admin/statistics',
+            element: <PrivateRoute><AdminStatistics /></PrivateRoute>
+         },
+         {
+            path: 'admin/all-parcels',
+            element: <PrivateRoute><AllParcel /></PrivateRoute>
+         },
+         {
+            path: 'admin/all-parcels',
+            element: <PrivateRoute><AllParcel /></PrivateRoute>
+         },
+         {
+            path: 'admin/all-users',
+            element: <PrivateRoute><AllUsers /></PrivateRoute>
+         },
+         {
+            path: 'admin/all-delivery-men',
+            element: <PrivateRoute><AllDeliveryMen /></PrivateRoute>
+         },
+         {
+            path: 'deliveryMan/statistics',
+            element: <PrivateRoute><DeliveryManStatistics /></PrivateRoute>
+         },
+         {
+            path: 'deliveryMan/my-delivery-list',
+            element: <PrivateRoute><MyDeliveryList /></PrivateRoute>
+         },
+         {
+            path: 'deliveryMan/my-reviews',
+            element: <PrivateRoute><MyReviews /></PrivateRoute>
+         },
       ]
    }
 ])

@@ -13,7 +13,7 @@ return(
                <div className='text-[40px] lg:text-[67px] font-black -mb-[5px] lg:-mb-[8px]'>E</div>
                <div className='text-[25px] lg:text-[40px] -mb-[3px] lg:-mb-[5px] font-bold text-orange-500 tracking-[1px] '>Parcel</div>
             </div>
-            <hr className='border-2 border-black' />
+            <hr className='border-2 border-gray-500' />
             <div className='text-[12px] lg:text-base font-railway italic text-orange-500 '>Streamlined Parcel Solutions</div>
          </div>
       </Link>
