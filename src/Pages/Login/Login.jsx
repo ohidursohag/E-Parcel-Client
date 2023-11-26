@@ -55,7 +55,7 @@ const Login = () => {
             if (user?.email && accessToken?.success) {
                 const data = await saveUserData(user, 'user')
                 console.log(data);
-                toast.success('Successfully Registered', { id: toastId })
+                toast.success('Successfully Logged In', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
 
             } else {
