@@ -5,23 +5,41 @@ import { GiStarsStack } from "react-icons/gi";
 import { FaCreditCard } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import useUserBookings from "../../../Hooks/useUserBookings";
-import LoadingAnimation from "../../../Components/Shared/LoadingAnimation/LoadingAnimation";
 import useUpdateBookingsData from "../../../Hooks/useUpdateBookingsData";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const MyParcels = () => {
 
-    const { userBookings, refatch, isLoading } = useUserBookings()
+    const { userBookings, isLoading } = useUserBookings()
     const { mutate } = useUpdateBookingsData();
     if (isLoading) {
-        return <LoadingAnimation />;
+        return ;
     }
     const handleCancelBooking = async (id) => {
-        const updatedBookingData = {
-            status: "canceled"
-        }
-        
-        mutate({ id, updatedBookingData })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to Cancel this Bookings?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Confirm"
+        }).then(async (result) => {
+            if (result.isConfirmed) {                
+               try {
+                   const updatedBookingData = {
+                       status: "canceled"
+                   }
+                    mutate({ id, updatedBookingData })
+                   toast.success('Bookings Canceled')
 
+               } catch (error) {
+                toast.error(error.message)
+               }
+            }
+        })
+       
     }
     // console.log(userBookings);
     return (
@@ -29,13 +47,12 @@ const MyParcels = () => {
             <Title title="My Parcels " />
             <div className=" mx-auto bg-white px-5 py-10">
                 <div className="text-3xl font-bold font-cinzel flex justify-between">
-                    <h2 >Total orders: </h2>
-                    <h2 >total price: </h2>
+                    <h2 >Total Bookings: {userBookings?.length}</h2>
                 </div>
 
                 {/* Table */}
                 <div className="overflow-x-auto my-10 rounded-t-lg shadow">
-                    <table className="table table-xs  w-full  ">
+                    <table className="table table-sm  w-full  ">
                         {/* head */}
                         <thead className="bg-orange-500  h-[50px] text-base  text-white ">
                             <tr className=" ">
@@ -50,7 +67,7 @@ const MyParcels = () => {
                         </thead>
                         <tbody className="text-[#737373]">
                             {
-                                userBookings.map((booking, index) => <tr key={booking?._id}>
+                                userBookings?.map((booking, index) => <tr key={booking?._id} className="">
                                     <th className="text-lg text-center text-black font-bold">{index + 1}</th>
                                     <td>
                                         <div className="  ">
@@ -77,11 +94,11 @@ const MyParcels = () => {
 
                                     </td>
                                     <td>
-                                        <div className=" font-medium text-gray-600 text-base border-b pb-1 border-b-orange-100">{booking?.status}</div>
+                                        <div className=" font-medium text-gray-600 text-base ">{booking?.status}</div>
                                     </td>
                                     <th>
                                         <div className="flex  flex-col gap-3">
-                                            <Link
+                                            <Link to={`/dashboard/user/update-booking/${booking?._id}`}
                                                 className={`btn btn-ghost btn-sm px-5 text-white w-full bg-orange-300  hover:bg-orange-300 ${booking?.status !== 'pending' ? 'hidden' : ''}`}>
                                                 <FaEdit size={20} color="white" /> Update
                                             </Link>
@@ -98,7 +115,7 @@ const MyParcels = () => {
                                             </button>
 
                                             <button
-                                                className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#d1b254]  hover:bg-[#d1b254] ${booking?.status === 'canceled ' ? 'hidden' : ''}`}>
+                                                className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#d1b254]  hover:bg-[#d1b254] ${booking?.status === 'canceled' ? 'hidden' : ''}`}>
                                                 <FaCreditCard size={20} color="white" /> Pay
                                             </button>
                                         </div>

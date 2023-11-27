@@ -20,6 +20,7 @@ import MyReviews from "../Pages/Dashboard/DeliveryMan/MyReviews";
 import DeliveryMenRoute from "./DeliveryMenRoute";
 import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
+import UpdateBookingsData from "../Pages/Dashboard/User/UpdateBookingsData";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -45,6 +46,10 @@ const myCreatedRoutes = createBrowserRouter([
          {
             path: 'user/parcel-booking',
             element: <PrivateRoute><UserRoute><BookAParcel /></UserRoute></PrivateRoute>
+         },
+         {
+            path: 'user/update-booking/:id',
+            element: <PrivateRoute><UserRoute><UpdateBookingsData /></UserRoute></PrivateRoute>
          },
          {
             path: 'user/statistics',

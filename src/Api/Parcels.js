@@ -20,7 +20,8 @@ export const getUserBookingsData = async (email) => {
 
 // Update Parcel Booking Data in db
 export const updateBookingData = async (id, updatedData) => {
-   console.log(id, updatedData);
+   // console.log(id, updatedData);
    const { data } = await axiosSecure.patch(`/update-booking-data/${id}`, updatedData);
+   console.log(data);
    return data;
 }

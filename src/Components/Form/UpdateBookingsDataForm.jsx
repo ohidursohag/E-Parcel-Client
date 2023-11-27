@@ -1,18 +1,36 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
-import { useState } from "react";
+import {  useState } from "react";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import { addBookingsData } from "../../Api/Parcels";
+// import { useEffect } from "react";
+// import useGetSingleBookingData from "../../Hooks/useGetSingleBookingData";
+import {  getBookingDataById } from "../../Api/Parcels";
+import { useParams } from "react-router-dom";
+import useUpdateBookingsData from "../../Hooks/useUpdateBookingsData";
 
-
-const ParcelBookingForm = () => {
-   const { handleSubmit, register, formState: { errors } } = useForm();
+const UpdateBookingsDataForm = () => {
    const [bookingPrice, setBookingPrice] = useState(0)
+   // const [parcelData, setParcelData] = useState({})
    const { user } = useAuth()
+   const { id } = useParams()
+   const {mutate } = useUpdateBookingsData()
+   // const { bookingData, refetch } = useGetSingleBookingData(id)
+   // useEffect( () => {
+   //    setParcelData(bookingData)
+   // }, [bookingData])
+   // console.log(parcelData);
+   const { handleSubmit, register, formState: { errors } } = useForm({
 
-   // Boooking Date
-   const bookingDate = new Date().toLocaleDateString().split('/').join('-');
+      // defaultValues: parcelData 
+      defaultValues: async () => await getBookingDataById(id)
+
+   })
+
+   // console.log(bookingData);
+
+   // // Boooking Date
+   // const bookingDate = new Date().toLocaleDateString().split('/').join('-');
    // console.log(bookingDate);
    const getBookingPrice = (e) => {
       const parcelWeight = Number(e.target.value)
@@ -27,13 +45,12 @@ const ParcelBookingForm = () => {
          setBookingPrice(0);
       }
    }
-
    const onSubmit = (data) => {
       // console.log(data);
       // console.log(Object.keys(data));
       Swal.fire({
          title: "Are you sure?",
-         text: "You want to Book this Parcel",
+         text: "You want to Update this Bookings",
          icon: "warning",
          showCancelButton: true,
          confirmButtonColor: "#3085d6",
@@ -41,8 +58,8 @@ const ParcelBookingForm = () => {
          confirmButtonText: "Confirm"
       }).then(async (result) => {
          if (result.isConfirmed) {
-            const toastId = toast.loading('Booking processing...');
-            const bookingData = {
+            const toastId = toast.loading('Update processing...');
+            const updatedBookingData = {
                senderName: data.senderName,
                senderEmail: data.senderEmail,
                senderPhone: data.senderPhone,
@@ -55,20 +72,19 @@ const ParcelBookingForm = () => {
                latitude: data.latitude,
                longitude: data.longitude,
                status: 'pending',
-               bookingDate,
                bookingPrice,
+               // bookingDate
             }
             try {
-               const booking = await addBookingsData(bookingData)
-               console.log(booking);
-               toast.success('successfully booked', { id: toastId });
+               mutate({ id, updatedBookingData })
+               toast.success('successfully Updated', { id: toastId });
             } catch (error) {
                toast.error(error.message, { id: toastId })
             }
             // console.log(bookingData);
          }
-         
-       })
+
+      })
 
 
       const bookingData = {
@@ -78,16 +94,15 @@ const ParcelBookingForm = () => {
          parcelType: data.parcelType,
          receiverName: data.receiverName,
          parcelWeight: data.parcelWeight,
-         receiverPhone:data.receiverPhone,
-         requestedDeliveryDate:data.requestedDeliveryDate,
-         deliveryAddress:data.deliveryAddress,
-         latitude:data.latitude,
-         longitude:data.longitude,
+         receiverPhone: data.receiverPhone,
+         requestedDeliveryDate: data.requestedDeliveryDate,
+         deliveryAddress: data.deliveryAddress,
+         latitude: data.latitude,
+         longitude: data.longitude,
          bookingPrice,
       }
       console.log(bookingData);
    }
-
    return (
       <>
          <form onSubmit={handleSubmit(onSubmit)}
@@ -239,11 +254,11 @@ const ParcelBookingForm = () => {
             {/* Price, book button */}
             <div className="flex justify-between  items-center ">
                <input type="submit" value="Book" className="btn px-10 text-lg bg-orange-500 text-white hover:bg-orange-700" />
-               <div className="text-xl font-semibold">Price: TK.<span className="text-orange-500 text-3xl">{bookingPrice|| '00'}</span></div>
+               <div className="text-xl font-semibold">Price: TK.<span className="text-orange-500 text-3xl">{bookingPrice || '00'}</span></div>
             </div>
 
          </form>
       </>
    )
 }
-export default ParcelBookingForm;
+export default UpdateBookingsDataForm;

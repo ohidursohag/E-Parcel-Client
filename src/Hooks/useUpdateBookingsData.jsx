@@ -6,13 +6,12 @@ const useUpdateBookingsData = () => {
    const queryClient = useQueryClient()
    const { mutate } = useMutation({
       mutationKey: ['user_bookings'],
-      mutationFn: async ({id,updatedBookingData}) => {
-         console.log(id,updatedBookingData);
-         const updateResponse = await updateBookingData(id, updatedBookingData)
+      mutationFn: async ({ id, updatedBookingData }) => {
+         const updateResponse = await updateBookingData(id, updatedBookingData);
          return updateResponse
       },
       onSuccess: () => {
-         queryClient.invalidateQueries({ queryKey: ["user_bookings"] });
+         queryClient.invalidateQueries({ queryKey: ["user_bookings"] });        
       },
    })
 
