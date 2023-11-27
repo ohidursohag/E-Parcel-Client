@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 const DropDown = () => {
    const { user, logOut } = useAuth()
    const [isOpen, setIsOpen] = useState(false)
+   
 
    return (
       <div className="">
