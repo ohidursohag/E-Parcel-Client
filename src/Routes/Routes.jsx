@@ -19,6 +19,7 @@ import MyDeliveryList from "../Pages/Dashboard/DeliveryMan/MyDeliveryList";
 import MyReviews from "../Pages/Dashboard/DeliveryMan/MyReviews";
 import DeliveryMenRoute from "./DeliveryMenRoute";
 import AdminRoute from "./AdminRoute";
+import UserRoute from "./UserRoute";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -43,15 +44,15 @@ const myCreatedRoutes = createBrowserRouter([
          },
          {
             path: 'user/parcel-booking',
-            element: <PrivateRoute><BookAParcel /></PrivateRoute>
+            element: <PrivateRoute><UserRoute><BookAParcel /></UserRoute></PrivateRoute>
          },
          {
             path: 'user/statistics',
-            element: <PrivateRoute><UserStatistics /></PrivateRoute>
+            element: <PrivateRoute><UserRoute><UserStatistics /></UserRoute></PrivateRoute>
          },
          {
             path: 'user/my-parcels',
-            element: <PrivateRoute><MyParcels /></PrivateRoute>
+            element: <PrivateRoute><UserRoute><MyParcels /></UserRoute></PrivateRoute>
          },
          {
             path: 'admin/statistics',

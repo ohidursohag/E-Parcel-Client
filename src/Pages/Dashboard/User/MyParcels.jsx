@@ -6,14 +6,24 @@ import { FaCreditCard } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import useUserBookings from "../../../Hooks/useUserBookings";
 import LoadingAnimation from "../../../Components/Shared/LoadingAnimation/LoadingAnimation";
+import useUpdateBookingsData from "../../../Hooks/useUpdateBookingsData";
 
 const MyParcels = () => {
-      
+
     const { userBookings, refatch, isLoading } = useUserBookings()
+    const { mutate } = useUpdateBookingsData();
     if (isLoading) {
-        return <LoadingAnimation/>;
+        return <LoadingAnimation />;
     }
-    console.log(userBookings);
+    const handleCancelBooking = async (id) => {
+        const updatedBookingData = {
+            status: "canceled"
+        }
+        
+        mutate({ id, updatedBookingData })
+
+    }
+    // console.log(userBookings);
     return (
         <div>
             <Title title="My Parcels " />
@@ -25,7 +35,7 @@ const MyParcels = () => {
 
                 {/* Table */}
                 <div className="overflow-x-auto my-10 rounded-t-lg shadow">
-                    <table className="table  w-full  ">
+                    <table className="table table-xs  w-full  ">
                         {/* head */}
                         <thead className="bg-orange-500  h-[50px] text-base  text-white ">
                             <tr className=" ">
@@ -40,8 +50,8 @@ const MyParcels = () => {
                         </thead>
                         <tbody className="text-[#737373]">
                             {
-                                userBookings.map((booking, index) => <tr  key={booking?._id}>
-                                    <th className="text-lg text-center text-black font-bold">{index+1}</th>
+                                userBookings.map((booking, index) => <tr key={booking?._id}>
+                                    <th className="text-lg text-center text-black font-bold">{index + 1}</th>
                                     <td>
                                         <div className="  ">
                                             <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Parcel Type:</span> <span className="text-orange-500">{booking?.parcelType}</span></div>
@@ -54,8 +64,8 @@ const MyParcels = () => {
                                         <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Requested Delivery:</span> <span className="text-orange-500">{booking?.requestedDeliveryDate}</span></div>
                                         {
                                             booking?.approximateDeliveryDate &&
-                                             <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Approximate Delivery:</span> <span className="text-orange-500">01-01-2024</span></div>
-                                       }
+                                            <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Approximate Delivery:</span> <span className="text-orange-500">01-01-2024</span></div>
+                                        }
                                     </td>
                                     <td>
                                         {
@@ -64,19 +74,19 @@ const MyParcels = () => {
                                                 <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id:</span> <span className="text-orange-500">{booking?.deliveryman?.id}</span></div>
                                             </div>
                                         }
-                                        
+
                                     </td>
                                     <td>
-                                        <div className=" font-medium text-gray-600 border-b pb-1 border-b-orange-100">{booking?.status}</div>
+                                        <div className=" font-medium text-gray-600 text-base border-b pb-1 border-b-orange-100">{booking?.status}</div>
                                     </td>
                                     <th>
                                         <div className="flex  flex-col gap-3">
-                                            <Link 
-                                                className={`btn btn-ghost btn-sm px-5 text-white w-full bg-orange-300  hover:bg-orange-300 ${booking?.status !== 'pending' ? 'hidden':''}`}>
+                                            <Link
+                                                className={`btn btn-ghost btn-sm px-5 text-white w-full bg-orange-300  hover:bg-orange-300 ${booking?.status !== 'pending' ? 'hidden' : ''}`}>
                                                 <FaEdit size={20} color="white" /> Update
                                             </Link>
 
-                                            <button
+                                            <button onClick={() => handleCancelBooking(booking?._id)}
                                                 className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#B91C1C]  hover:bg-[#B91C1C] ${booking?.status !== 'pending' ? 'hidden' : ''}`}>
                                                 <RxCross1 size={20} color="white" /> Cancel
                                             </button>
@@ -88,7 +98,7 @@ const MyParcels = () => {
                                             </button>
 
                                             <button
-                                                className="btn btn-ghost btn-sm px-5 w-full text-white bg-[#d1b254]  hover:bg-[#d1b254]">
+                                                className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#d1b254]  hover:bg-[#d1b254] ${booking?.status === 'canceled ' ? 'hidden' : ''}`}>
                                                 <FaCreditCard size={20} color="white" /> Pay
                                             </button>
                                         </div>
@@ -96,7 +106,7 @@ const MyParcels = () => {
                                     </th>
                                 </tr>)
                             }
-                            
+
 
                         </tbody>
                     </table>
