@@ -38,7 +38,6 @@ const Login = () => {
             if (accessToken?.success) {
                 toast.success('Successfully Logged In', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
-
             } else {
                 logOut()
             }

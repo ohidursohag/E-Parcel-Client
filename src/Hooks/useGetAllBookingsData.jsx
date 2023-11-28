@@ -3,7 +3,6 @@ import { getAllBookingData } from "../Api/Parcels";
 
 
 const useGetAllBookingsData = () => {
-   // console.log('Hook e paice');
    const { data: allBookings, refetch, isLoading } = useQuery({
       queryKey: ['all_bookings'],
       queryFn: async () => await getAllBookingData(),

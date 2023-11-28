@@ -8,14 +8,31 @@ import useUserBookings from "../../../Hooks/useUserBookings";
 import useUpdateBookingsData from "../../../Hooks/useUpdateBookingsData";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useUpdateUserData from "../../../Hooks/useUpdateUserData";
+import useGetCurrentUser from "../../../Hooks/useGetCurrentUser";
+import { useEffect } from "react";
 
 const MyParcels = () => {
-
+    const { updateUserInfo } = useUpdateUserData()
     const { userBookings, isLoading } = useUserBookings()
     const { mutate } = useUpdateBookingsData();
-    if (isLoading) {
-        return ;
-    }
+    const { currentUser } = useGetCurrentUser()
+
+    // console.log(currentUser);
+    const totalParcelBooked = userBookings?.length;
+    // ToDo: Claculate only paid amount
+    const totalSpentAmount = userBookings?.reduce((total, currenValue) => total + currenValue?.bookingPrice, 0);
+    // console.log(totalSpentAmount);
+    const id = currentUser?._id;
+    useEffect(() => {
+        const updatedUserData = {
+            totalParcelBooked,
+            totalSpentAmount
+        }
+        updateUserInfo({ id, updatedUserData })
+    }, [updateUserInfo, totalParcelBooked, totalSpentAmount, id])
+
+
     const handleCancelBooking = async (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -26,21 +43,27 @@ const MyParcels = () => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Confirm"
         }).then(async (result) => {
-            if (result.isConfirmed) {                
-               try {
-                   const updatedBookingData = {
-                       status: "canceled"
-                   }
+            if (result.isConfirmed) {
+                try {
+                    const updatedBookingData = {
+                        status: "canceled"
+                    }
                     mutate({ id, updatedBookingData })
-                   toast.success('Bookings Canceled')
+                    toast.success('Bookings Canceled')
 
-               } catch (error) {
-                toast.error(error.message)
-               }
+                } catch (error) {
+                    toast.error(error.message)
+                }
             }
         })
-       
+
     }
+
+
+    if (isLoading) {
+        return;
+    }
+
     // console.log(userBookings);
     return (
         <div>

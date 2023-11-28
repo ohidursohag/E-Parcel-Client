@@ -1,10 +1,12 @@
 import axiosSecure from "./axiosSecure";
 
 // Save User Data in Database
-export const saveUserData = async (user, userRole) => {
+export const saveUserData = async (user, userRole,phone) => {
    const currentUserData = {
       name: user?.displayName,
+      image: user?.photoURL,
       email: user?.email,
+      phoneNumber: phone,
       role: userRole,
       status: 'varified'
    }

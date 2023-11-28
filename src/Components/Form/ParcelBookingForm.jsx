@@ -5,12 +5,16 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { addBookingsData } from "../../Api/Parcels";
 
+import useGetCurrentUser from "../../Hooks/useGetCurrentUser";
+
 
 const ParcelBookingForm = () => {
-   const { handleSubmit, register, formState: { errors } } = useForm();
    const [bookingPrice, setBookingPrice] = useState(0)
    const { user } = useAuth()
-
+   const { currentUser, isLoading } =useGetCurrentUser()
+   const { handleSubmit, register, formState: { errors } } = useForm();
+   
+   // console.log(currentUser);
    // Boooking Date
    const bookingDate = new Date().toLocaleDateString().split('/').join('-');
    // console.log(bookingDate);
@@ -132,7 +136,9 @@ const ParcelBookingForm = () => {
                      className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                      {...register('senderPhone', { required: true })}
                      type='phone'
+                     value={!isLoading && currentUser?.phoneNumber}
                      placeholder='Sender Phone Number'
+                     readOnly                   
                   />
                   {errors.senderPhone?.type === 'required' && <p className='text-red-500'>required</p>}
                </div>

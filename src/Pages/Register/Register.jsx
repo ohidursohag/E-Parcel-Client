@@ -12,6 +12,7 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { uploadImage } from '../../Api/imageUpload';
 import toast from 'react-hot-toast';
 import { getAccessToken, saveUserData } from '../../Api/Auth';
+import { randomphoneNumber } from '../../Components/Shared/Utilities/randomphoneNumber';
 const Register = () => {
     const [showPass, setShowPass] = useState(false);
     const { createUser, updateUserProfile, signInWithGoogle, logOut } = useAuth()
@@ -28,6 +29,8 @@ const Register = () => {
         const password = data?.password;
         const userRole = data?.userRole;
         const captchaInput = data?.captchaInput;
+        const phone = data?.phone;
+        console.log(phone);
         if (!validateCaptcha(captchaInput)) {
             toast.error('Invalid Captcha,Please try again', { id: toastId });
             return;
@@ -39,12 +42,12 @@ const Register = () => {
             const imageUploadResponse = await uploadImage(data?.image[0])
             const image = imageUploadResponse?.data?.url;
             //3. Save username & profile photo
-            await updateUserProfile(name, image)
+            await updateUserProfile({name, image,phone})
             const accessToken = await getAccessToken(user?.email)
 
             if (accessToken?.success) {
                 // save/update user info to database
-                const data = await saveUserData(user, userRole)
+                const data = await saveUserData(user, userRole,phone)
                 console.log(data);
                 toast.success('Registration Successfull and Logged In', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
@@ -66,7 +69,7 @@ const Register = () => {
             // get AccessToken 
             const accessToken = await getAccessToken(user?.email)
             if (accessToken?.success) {
-                const data = await saveUserData(user, 'user')
+                const data = await saveUserData(user, 'user', randomphoneNumber())
                 console.log(data);
                 toast.success('Successfully Registered', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
@@ -86,10 +89,17 @@ const Register = () => {
                     <div className='w-11/12 lg:w-3/5 xl:w-1/2  my-16'>
                         <h2 className='text-4xl font-bold text-center mb-5'>Register</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className='w-full mb-5'>
-                                <label className="text-xl font-medium "> Name <span className='text-red-500'>*</span></label>
-                                <input type="text" {...register("name", { required: true })} placeholder="Name here" className=" h-14 w-full mt-2  rounded-[8px]  bg-white px-4  outline-none" />
-                                {errors.name?.type === 'required' && <p className='text-red-500'>Name is required</p>}
+                            <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-5'>
+                                <div className='w-full mb-5'>
+                                    <label className="text-xl font-medium "> Name <span className='text-red-500'>*</span></label>
+                                    <input type="text" {...register("name", { required: true })} placeholder="Name here" className=" h-14 w-full mt-2  rounded-[8px]  bg-white px-4  outline-none" />
+                                    {errors.name?.type === 'required' && <p className='text-red-500'>Name is required</p>}
+                                </div>
+                                <div className='w-full mb-5'>
+                                    <label className="text-xl font-medium "> Phone Number <span className='text-red-500'>*</span></label>
+                                    <input type="phone" {...register("phone", { required: true })} placeholder="Phone number here" className=" h-14 w-full mt-2  rounded-[8px]  bg-white px-4  outline-none" />
+                                    {errors.phone?.type === 'required' && <p className='text-red-500'>Phone number is required</p>}
+                                </div>
                             </div>
 
                             <div className='w-full mb-5'>
@@ -114,7 +124,16 @@ const Register = () => {
 
                             </div>
 
-                            <div className='mb-5 flex '>
+                            <div className='mb-5 grid grid-cols-1 md:grid-cols-2 gap-5'>
+                                <div>
+                                    <label className='block mb-2 text-xl  font-medium '>
+                                        Select Role:
+                                    </label>
+                                    <select {...register("userRole")} className='rounded-lg py-4 pl-2 w-full outline-none'>
+                                        <option value="user">User</option>
+                                        <option value="deliveryMan">Delivery Man</option>
+                                    </select>
+                                </div>
                                 <div className=''>
                                     <label className='block mb-2 text-xl  font-medium '>
                                         Select Image:
@@ -127,15 +146,7 @@ const Register = () => {
                                     />
                                     {errors.image?.type === 'required' && <p className='text-red-500'>image is required</p>}
                                 </div>
-                                <div>
-                                    <label className='block mb-2 text-xl  font-medium '>
-                                        Select Role:
-                                    </label>
-                                    <select {...register("userRole")} className='rounded-lg py-2 pl-2'>
-                                        <option value="user">User</option>
-                                        <option value="deliveryMan">Delivery Man</option>
-                                    </select>
-                                </div>
+                                
                             </div>
                             <div className='w-full'>
                                 <LoadCanvasTemplate />
@@ -145,7 +156,7 @@ const Register = () => {
                                 {errors.captchaInput?.type === 'required' && <p className='text-red-500'>Captcha validation is required</p>}
                             </div>
 
-                            <button type='submit' className='btn w-full py-4 rounded-md text-lg bg-[rgba(209,160,84,0.5)] mt-5 text-white hover:bg-[rgba(209,160,84,0.7)]'>
+                            <button type='submit' className='btn w-full h-[55px] rounded-md border-none text-lg bg-[rgba(209,160,84,0.5)] mt-5 text-white hover:bg-[rgba(209,160,84,0.7)]'>
                                 Register
                             </button>
                         </form>

@@ -13,13 +13,13 @@ const DropDown = () => {
          <div
             // onClick={() => handleDropDown}
             onClick={() => setIsOpen(!isOpen)}
-            className='px-2 py-1 md:py-1 md:px-2 border-[1px] bg-orange-500 border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
+            className='px-2 py-2 h-[40px] md:py-1 md:px-2 border-[1px] bg-orange-500 border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
          >
             <AiOutlineMenu color="white" />
-            <div className=''>
+            <div className='rounded-full w-[30px] h-[30px] bg-white'>
                {/* Avatar */}
                <img
-                  className='rounded-full'
+                  className='rounded-full object-cover object-center w-[30px] h-[30px]'
                   referrerPolicy='no-referrer'
                   src={user && user.photoURL ? user.photoURL : avatarImg}
                   alt='profile'
