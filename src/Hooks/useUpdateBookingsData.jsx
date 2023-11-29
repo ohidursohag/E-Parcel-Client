@@ -11,7 +11,7 @@ const useUpdateBookingsData = () => {
          return updateResponse
       },
       onSuccess: () => {
-         queryClient.invalidateQueries({ queryKey: ["user_bookings"] });        
+         queryClient.invalidateQueries({ queryKey: ["all_bookings"] });        
       },
    })
 

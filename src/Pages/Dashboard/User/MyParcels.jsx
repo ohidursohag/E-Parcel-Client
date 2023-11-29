@@ -77,7 +77,7 @@ const MyParcels = () => {
                 <div className="overflow-x-auto my-10 rounded-t-lg shadow">
                     <table className="table table-sm  w-full  ">
                         {/* head */}
-                        <thead className="bg-orange-500  h-[50px] text-base  text-white ">
+                        <thead className="bg-orange-500  h-[50px]   text-white ">
                             <tr className=" ">
                                 <th>
                                 </th>
@@ -94,30 +94,31 @@ const MyParcels = () => {
                                     <th className="text-lg text-center text-black font-bold">{index + 1}</th>
                                     <td>
                                         <div className="  ">
-                                            <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Parcel Type:</span> <span className="text-orange-500">{booking?.parcelType}</span></div>
-                                            <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Parcel Weight:</span> <span className="text-orange-500">{booking?.parcelWeight} Kg</span></div>
-                                            <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Delivery Coast:</span> <span className="text-orange-500">{booking?.bookingPrice} Tk.</span></div>
+                                            <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Parcel Type:</span> <span className="text-orange-500">{booking?.parcelType}</span></div>
+                                            <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Parcel Weight:</span> <span className="text-orange-500">{booking?.parcelWeight} Kg</span></div>
+                                            <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Delivery Coast:</span> <span className="text-orange-500">{booking?.bookingPrice} Tk.</span></div>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Booking:</span> <span className="text-orange-500">{booking?.bookingDate}</span></div>
-                                        <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Requested Delivery:</span> <span className="text-orange-500">{booking?.requestedDeliveryDate}</span></div>
+                                        <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Booking:</span> <span className="text-orange-500">{booking?.bookingDate}</span></div>
+                                        <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Requested Delivery:</span> <span className="text-orange-500">{booking?.requestedDeliveryDate}</span></div>
                                         {
                                             booking?.approximateDeliveryDate &&
-                                            <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Approximate Delivery:</span> <span className="text-orange-500">01-01-2024</span></div>
+                                            <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Approximate Delivery:</span> <span className="text-orange-500">01-01-2024</span></div>
                                         }
                                     </td>
                                     <td>
                                         {
-                                            booking?.deliveryman && <div>
-                                                <div className=" font-medium text-gray-600 border-b pb-1 border-b-orange-100">{booking?.deliveryman?.name}</div>
-                                                <div className="text-base border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id:</span> <span className="text-orange-500">{booking?.deliveryman?.id}</span></div>
+                                            booking?.deliveryMan && <div>
+                                                <div className=" font-medium text-gray-600 border-b pb-1 border-b-orange-100">{booking?.deliveryMan?.name}</div>
+                                                <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id:</span> <span className="text-orange-500">{booking?.deliveryMan?.id}</span></div>
+                                                <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Phone:</span> <span className="text-orange-500">{booking?.deliveryMan?.phoneNumber}</span></div>
                                             </div>
                                         }
 
                                     </td>
                                     <td>
-                                        <div className=" font-medium text-gray-600 text-base ">{booking?.status}</div>
+                                        <div className=" font-medium text-gray-600  ">{booking?.status}</div>
                                     </td>
                                     <th>
                                         <div className="flex  flex-col gap-3">
