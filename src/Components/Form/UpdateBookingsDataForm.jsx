@@ -85,23 +85,6 @@ const UpdateBookingsDataForm = () => {
          }
 
       })
-
-
-      const bookingData = {
-         senderName: data.senderName,
-         senderEmail: data.senderEmail,
-         senderPhone: data.senderPhone,
-         parcelType: data.parcelType,
-         receiverName: data.receiverName,
-         parcelWeight: data.parcelWeight,
-         receiverPhone: data.receiverPhone,
-         requestedDeliveryDate: data.requestedDeliveryDate,
-         deliveryAddress: data.deliveryAddress,
-         latitude: data.latitude,
-         longitude: data.longitude,
-         bookingPrice,
-      }
-      console.log(bookingData);
    }
    return (
       <>

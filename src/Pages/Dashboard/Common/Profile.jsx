@@ -2,11 +2,13 @@
 import { Helmet } from 'react-helmet-async'
 import useAuth from '../../../Hooks/useAuth'
 import useUserRole from '../../../Hooks/useUserRole'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
   const { user } = useAuth()
   const { role } = useUserRole()
-  console.log(user)
+  // console.log(user)
+
   return (
     <div className='flex justify-center items-center h-screen'>
       <Helmet>
@@ -15,8 +17,8 @@ const Profile = () => {
       <div className='bg-white shadow-lg rounded-2xl w-3/5'>
         <img
           alt='profile'
-          src='https://wallpapercave.com/wp/wp10784415.jpg'
-          className='w-full mb-4 rounded-t-lg h-36'
+          src='https://dynamic.brandcrowd.com/template/preview/design/27cf7d12-34a4-4ecd-bd87-c4c30d5c8ce7?v=4&designTemplateVersion=1&size=design-preview-standalone-1x'
+          className='w-full mb-4 rounded-t-lg h-36 object-'
         />
         <div className='flex flex-col items-center justify-center p-4 -mt-16'>
           <a href='#' className='relative block'>
@@ -27,12 +29,10 @@ const Profile = () => {
             />
           </a>
 
-          <p className='p-2 px-4 text-xs text-white bg-pink-500 rounded-full uppercase'>
+          <p className='p-2 px-4 text-xs text-white bg-orange-500 rounded-full uppercase'>
             {role === 'user' && 'User' || role === 'deliveryMan'&& 'Delivery Man' || 'Admin'}
           </p>
-          <p className='mt-2 text-xl font-medium text-gray-800 '>
-            User Id: {user?.uid}
-          </p>
+          
           <div className='w-full p-2 mt-4 rounded-lg'>
             <div className='flex flex-wrap items-center justify-between text-sm text-gray-600 '>
               <p className='flex flex-col'>
@@ -47,12 +47,12 @@ const Profile = () => {
               </p>
 
               <div>
-                <button className='bg-orange-500 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1'>
+                <Link to='/dashboard/update-profile' className='bg-orange-500 px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-orange-600 block'>
                   Update Profile
-                </button>
-                <button className='bg-orange-500 px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]'>
+                </Link>
+                {/* <button className='bg-orange-500 px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-orange-600' >
                   Change Password
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

@@ -141,8 +141,8 @@ const Register = () => {
                                     <input
                                         className='file:mr-4 file:py-2 file:px-4  file:border-0 file:text-base file:font-semibold file:text-[#444444] file:bg-gray-300 file:rounded-none file:normal-case text-lg  file:btn'
                                         type='file'
-                                        {...register("image", { required: true })}
                                         accept='image/*'
+                                        {...register("image", { required: true })}
                                     />
                                     {errors.image?.type === 'required' && <p className='text-red-500'>image is required</p>}
                                 </div>

@@ -21,6 +21,7 @@ import DeliveryMenRoute from "./DeliveryMenRoute";
 import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
 import UpdateBookingsData from "../Pages/Dashboard/User/UpdateBookingsData";
+import UpdateProfile from "../Pages/Dashboard/Common/UpdateProfile";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -42,6 +43,10 @@ const myCreatedRoutes = createBrowserRouter([
          {
             path: 'profile',
             element: <PrivateRoute><Profile /></PrivateRoute>
+         },
+         {
+            path: 'update-profile',
+            element: <PrivateRoute><UpdateProfile /></PrivateRoute>
          },
          {
             path: 'user/parcel-booking',
