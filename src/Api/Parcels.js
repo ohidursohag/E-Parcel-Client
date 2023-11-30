@@ -13,8 +13,10 @@ export const getBookingDataById = async (id) => {
    return data;
 }
 // get all bookings data by id
-export const getAllBookingData = async () => {
-   const { data } = await axiosSecure.get('/all-bookings-data');
+export const getAllBookingData = async ({deliveryManId=''}) => {
+   console.log(deliveryManId);
+   console.log();
+   const { data } = await axiosSecure.get(`/all-bookings-data?deliveryManId=${deliveryManId}`);
    return data;
 }
 

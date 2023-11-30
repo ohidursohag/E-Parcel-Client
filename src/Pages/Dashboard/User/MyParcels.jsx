@@ -8,29 +8,16 @@ import useUserBookings from "../../../Hooks/useUserBookings";
 import useUpdateBookingsData from "../../../Hooks/useUpdateBookingsData";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
-import useUpdateUserData from "../../../Hooks/useUpdateUserData";
-import useGetCurrentUser from "../../../Hooks/useGetCurrentUser";
-import { useEffect } from "react";
+import ReviewModal from "../../../Components/Modal/ReviewModal";
+import { useState } from "react";
 
 const MyParcels = () => {
-    const { updateUserInfo } = useUpdateUserData()
+    const [isShowModal, setIsShowModal] = useState(false);
+    const [deliveryManId, setDeliveryManId] = useState('');
+    // const { updateUserInfo } = useUpdateUserData()
     const { userBookings, isLoading } = useUserBookings()
     const { mutate } = useUpdateBookingsData();
-    const { currentUser } = useGetCurrentUser()
 
-    // console.log(currentUser);
-    const totalParcelBooked = userBookings?.length;
-    // ToDo: Claculate only paid amount
-    const totalSpentAmount = userBookings?.reduce((total, currenValue) => total + currenValue?.bookingPrice, 0);
-    // console.log(totalSpentAmount);
-    const id = currentUser?._id;
-    useEffect(() => {
-        const updatedUserData = {
-            totalParcelBooked,
-            totalSpentAmount
-        }
-        updateUserInfo({ id, updatedUserData })
-    }, [updateUserInfo, totalParcelBooked, totalSpentAmount, id])
 
 
     const handleCancelBooking = async (id) => {
@@ -109,10 +96,11 @@ const MyParcels = () => {
                                     </td>
                                     <td>
                                         {
-                                            booking?.deliveryMan && <div>
-                                                <div className=" font-medium text-gray-600 border-b pb-1 border-b-orange-100">{booking?.deliveryMan?.name}</div>
-                                                <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id:</span> <span className="text-orange-500">{booking?.deliveryMan?.id}</span></div>
-                                                <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Phone:</span> <span className="text-orange-500">{booking?.deliveryMan?.phoneNumber}</span></div>
+                                            <div className="  ">
+                                                {booking?.deliveryManName && <div className=" border-b pb-1 border-b-orange-100  font-medium text-gray-600">{booking?.deliveryManName}</div>}
+                                                {booking?.deliveryManId &&
+                                                    <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id: </span> <span className="text-orange-500">{booking?.deliveryManId} </span></div>}
+                                                {booking?.deliveryManPhoneNumber && <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Phone: </span> <span className="text-orange-500">{booking?.deliveryManPhoneNumber} </span></div>}
                                             </div>
                                         }
 
@@ -133,7 +121,10 @@ const MyParcels = () => {
                                             </button>
 
 
-                                            <button
+                                            <button onClick={() => {
+                                                setIsShowModal(true)
+                                                setDeliveryManId(booking?.deliveryManId)
+                                            }}
                                                 className={`btn btn-ghost btn-sm px-5 w-full bg-orange-600 text-white hover:bg-orange-600 ${booking?.status !== 'delivered' ? 'hidden' : ''}`}>
                                                 <GiStarsStack size={20} color="white" /> Review
                                             </button>
@@ -147,12 +138,15 @@ const MyParcels = () => {
                                     </th>
                                 </tr>)
                             }
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
+            <ReviewModal
+                isShowModal={isShowModal}
+                setIsShowModal={setIsShowModal}
+                deliveryManId={deliveryManId}
+            />
         </div>
     )
 }

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 const ManageBookingModal = ({ isShowModal, setIsShowModal, allDeliveryMan, bookingId: id, }) => {
    const { mutate: updateBooking } = useUpdateBookingsData();
-   const { register, handleSubmit, formState: { errors } } = useForm()
+   const { register, handleSubmit, formState: { errors },reset } = useForm()
    console.log(id);
    // Close Modal
    const closeModal = () => {
@@ -16,7 +16,6 @@ const ManageBookingModal = ({ isShowModal, setIsShowModal, allDeliveryMan, booki
 
    const onSubmit = async (data) => {
       // console.log(data);
-
       Swal.fire({
          title: "Are you sure?",
          text: "want to update this booking",
@@ -37,17 +36,15 @@ const ManageBookingModal = ({ isShowModal, setIsShowModal, allDeliveryMan, booki
                // console.log(selectedDeliveryMan);
                const updatedBookingData = {
                   approximateDeliveryDate,
-                  deliveryMan: {
-                     id: deliveryManId,
-                     name: selectedDeliveryMan?.name,
-                     phoneNumber: selectedDeliveryMan?.phoneNumber
-                  },
+                  deliveryManId: deliveryManId,
+                  deliveryManName: selectedDeliveryMan?.name,
+                  deliveryManPhoneNumber: selectedDeliveryMan?.phoneNumber,
                   status: 'on-the-way',
                }
                console.log(updatedBookingData);
                updateBooking({ id, updatedBookingData });
                toast.success('Successfully updated', { id: toastId });
-               
+               reset()
                closeModal();
             } catch (error) {
                toast.error(error.message, { id: toastId })
@@ -62,9 +59,9 @@ const ManageBookingModal = ({ isShowModal, setIsShowModal, allDeliveryMan, booki
       <>
          {
             isShowModal ? (
-               <div className=" fixed top-16 left-0 right-0 bottom-10 w-5/12 mx-auto bg-gray-400/70 rounded-xl p-10 backdrop-blur">
+               <div className=" fixed top-16 left-0 right-0 bottom-10 w-5/12 mx-auto bg-gray-400/50 rounded-xl p-10 backdrop-blur">
                   <div className=" flex flex-col gap-4 m-4">
-                     <h1 className="text-4xl font-bold">Breaking News!</h1>
+                     <h1 className="text-4xl text-center text-gray-600  font-bold">Manage Parcel Bookings</h1>
 
                      <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="w-full ">
@@ -76,7 +73,6 @@ const ManageBookingModal = ({ isShowModal, setIsShowModal, allDeliveryMan, booki
                               {
                                  allDeliveryMan?.map((deliveryMan) => <option key={deliveryMan?._id} value={deliveryMan?._id}>Id: {deliveryMan?._id} - {deliveryMan?.name}</option>)
                               }
-
                            </select>
 
                         </div>

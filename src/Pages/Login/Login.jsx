@@ -99,7 +99,7 @@ const Login = () => {
                                 {errors.captchaInput?.type === 'required' && <p className='text-red-500'>Captcha validation is required</p>}
                             </div>
 
-                            <button type='submit' className='btn w-full py-4 rounded-md text-lg bg-[rgba(209,160,84,0.5)] mt-5 text-white hover:bg-[rgba(209,160,84,0.7)]'>
+                            <button type='submit' className='btn w-full border-none rounded-md text-lg bg-[rgba(209,160,84,0.5)] mt-5 text-white hover:bg-[rgba(209,160,84,0.7)]'>
                                 Sign In
                             </button>
                         </form>

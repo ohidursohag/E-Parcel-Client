@@ -57,10 +57,10 @@ return(
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="text-lg  font-medium text-orange-500">{user?.totalParcelBooked}</div>
+                                        <div className="text-xl text-center  font-medium text-orange-500">{user?.totalParcelDelivered}</div>
                                     </td>
                                     <th>
-                                        <div className="text-lg flex gap-2  text-orange-500">4.5 <FaStar size={26}/></div>
+                                        <div className="text-lg flex gap-2  text-orange-500">{user?.averageRating} <FaStar size={26}/></div>
 
                                     </th>
 

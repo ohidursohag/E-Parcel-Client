@@ -3,10 +3,11 @@ import useAuth from "../../../Hooks/useAuth";
 import { AiOutlineMenu } from "react-icons/ai";
 import avatarImg from '../../../assets/image/avatar.webp'
 import { Link, NavLink } from "react-router-dom";
+import useUserRole from "../../../Hooks/useUserRole";
 const DropDown = () => {
    const { user, logOut } = useAuth()
    const [isOpen, setIsOpen] = useState(false)
-   
+   const { role } = useUserRole();
 
    return (
       <div className="">
@@ -39,7 +40,7 @@ const DropDown = () => {
                   {user ? (
                      <>
                         <Link
-                           to='/dashboard'
+                           to={`/dashboard/${role}/statistics`}
                            className=' hover:bg-orange-100 text-gray-600 transition font-semibold px-3 py-2'
                         >
                            Dashboard

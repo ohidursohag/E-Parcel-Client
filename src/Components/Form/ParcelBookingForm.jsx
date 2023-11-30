@@ -6,6 +6,9 @@ import toast from "react-hot-toast";
 import { addBookingsData } from "../../Api/Parcels";
 
 import useGetCurrentUser from "../../Hooks/useGetCurrentUser";
+import useUserBookings from "../../Hooks/useUserBookings";
+import { useEffect } from "react";
+import useUpdateUserData from "../../Hooks/useUpdateUserData";
 
 
 const ParcelBookingForm = () => {
@@ -13,7 +16,22 @@ const ParcelBookingForm = () => {
    const { user } = useAuth()
    const { currentUser, isLoading } =useGetCurrentUser()
    const { handleSubmit, register, formState: { errors } } = useForm();
-   
+   const { userBookings } = useUserBookings()
+   const { updateUserInfo } = useUpdateUserData()
+   // console.log(currentUser);
+   const totalParcelBooked = userBookings?.length;
+   // ToDo: Claculate only paid amount
+   const totalSpentAmount = userBookings?.reduce((total, currenValue) => total + currenValue?.bookingPrice, 0);
+   // console.log(totalSpentAmount);
+   const id = currentUser?._id;
+   useEffect(() => {
+      const updatedUserData = {
+         totalParcelBooked,
+         totalSpentAmount
+      }
+      updateUserInfo({ id, updatedUserData })
+   }, [updateUserInfo, totalParcelBooked, totalSpentAmount, id])
+
    // console.log(currentUser);
    // Boooking Date
    const bookingDate = new Date().toLocaleDateString().split('/').join('-');

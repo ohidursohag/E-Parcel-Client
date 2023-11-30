@@ -10,26 +10,12 @@ import ManageBookingModal from "../../../Components/Modal/ManageBookingModal";
 const AllParcel = () => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [bookingId, setBookingId] = useState(null);
-    const { allBookings} = useGetAllBookingsData()
+    const { allBookings } = useGetAllBookingsData({ deliveryManId:'' })
     // console.log(allBookings);
     const role = 'deliveryMan';
-    // const { updateUserInfo } = useUpdateUserData();
     const { allUser: allDeliveryMan } = useGetAllUserData({ role })
     const { user } = useAuth()
-    // const modalHandler = async () => {
-    //     try {
-    //         // const data = await updateRole({ email: user?.email, role })
-    //         // console.log(data)
-    //         // refetch()
-    //         toast.success('User role updated!')
-    //     } catch (err) {
-    //         console.log(err)
-    //         toast.error(err.message)
-    //     } finally {
-    //         setIsOpen(false)
-    //     }
-    // }
-    // console.log(allDeliveryMan);
+
     return (
         <div>
             <Title title="All Parcels " />
@@ -40,18 +26,18 @@ const AllParcel = () => {
 
                 {/* Table */}
                 <div className="overflow-x-auto my-10 rounded-t-lg shadow">
-                    <table className="table table-sm  w-full  ">
+                    <table className="table table-xs  w-full  ">
                         {/* head */}
                         <thead className="bg-orange-500  h-[50px]   text-white ">
-                            <tr className=" ">
+                            <tr className="text-base ">
                                 <th>
                                 </th>
                                 <th className="">Parcel Sender</th>
                                 <th>Dates</th>
                                 <th>Delivery man</th>
                                 <th>Delivery Cost</th>
-                                <th className="w-[100px]">Booking Status</th>
-                                <th className="w-[150px]">Actions</th>
+                                <th className="">Booking Status</th>
+                                <th className="">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="text-[#737373]">
@@ -76,11 +62,12 @@ const AllParcel = () => {
                                         </td>
                                         <td>
                                             {
-                                                booking?.deliveryMan &&
+                                                
                                                 <div className="  ">
-                                                    <div className=" border-b pb-1 border-b-orange-100  font-medium text-gray-600">{booking?.deliveryMan?.name}</div>
-                                                    <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id: </span> <span className="text-orange-500">{booking?.deliveryMan?.id} </span></div>
-                                                    <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Phone: </span> <span className="text-orange-500">{booking?.deliveryMan?.phoneNumber} </span></div>
+                                                    {booking?.deliveryManName && <div className=" border-b pb-1 border-b-orange-100  font-medium text-gray-600">{booking?.deliveryManName}</div>}
+                                                    {booking?.deliveryManId &&
+                                                        <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Id: </span> <span className="text-orange-500">{booking?.deliveryManId} </span></div>}
+                                                    { booking?.deliveryManPhoneNumber && <div className=" border-b pb-1 border-b-orange-100"><span className=" font-medium text-gray-600">Phone: </span> <span className="text-orange-500">{booking?.deliveryManPhoneNumber} </span></div>}
                                                 </div>
                                             }
                                             
@@ -109,9 +96,6 @@ const AllParcel = () => {
                                                         className={`btn btn-ghost btn-sm px-5 w-full bg-orange-600 text-white hover:bg-orange-600 `}>
                                                         <GrSettingsOption size={20} color="white" /> Manage
                                                     </button>}
-
-
-
                                             </div>
                                         </th>
                                     </tr>)
