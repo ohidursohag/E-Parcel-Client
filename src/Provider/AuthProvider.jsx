@@ -48,10 +48,11 @@ const AuthProvider = ({ children }) => {
     return signOut(auth)
   }
 
-  const updateUserProfile = ({name, photo, phone}) => {
+  const updateUserProfile = ({ name, image, phone }) => {
+    // console.log(object);
     return updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photo,
+      photoURL: image,
       phoneNumber: phone,
     })
   }

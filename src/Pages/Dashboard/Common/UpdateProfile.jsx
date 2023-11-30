@@ -19,7 +19,7 @@ const UpdateProfile = () => {
     });
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         let image = currentUser?.image
         // console.log(data?.image !== currentUser?.image);
         if (data?.image !== currentUser?.image) {
@@ -92,7 +92,7 @@ return(
                             Update Profile Image:
                         </label>
                         <input
-                            className='file:mr-4 file:py-2 file:px-4  file:border-0 file:text-base file:font-semibold file:text-[#444444] file:bg-gray-300 file:rounded-none file:normal-case text-lg  file:btn'
+                            className='file:mr-4 file:py-2 file:px-4  file:border-0 file:text-base file:font-semibold file:text-white file:rounded-lg file:bg-orange-500  file:normal-case text-lg  file:btn'
                             type='file'
                             accept='image/*'
                             {...register("image",)}

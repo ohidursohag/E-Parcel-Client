@@ -23,6 +23,7 @@ const Register = () => {
         loadCaptchaEnginge(6);
     }, [])
     const onSubmit = async (data) => {
+        console.log(data);
         const toastId = toast.loading('Registering...')
         const name = data?.name;
         const email = data?.email;
@@ -41,8 +42,9 @@ const Register = () => {
             //2. upload image
             const imageUploadResponse = await uploadImage(data?.image[0])
             const image = imageUploadResponse?.data?.url;
+            console.log(imageUploadResponse, image);
             //3. Save username & profile photo
-            await updateUserProfile({name, image,phone})
+            await updateUserProfile({name,image,phone})
             const accessToken = await getAccessToken(user?.email)
 
             if (accessToken?.success) {

@@ -1,8 +1,49 @@
-# React + Vite
+# E-Parcel
+Live Link-  [E-Parcel](https://e-parcel-f5214.web.app/) 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+### Navigation and Footer
+- A complete responsive navbar for easy navigation throughout the application.
+- A stylish and responsive footer for important links and information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Home Page
+- A visually appealing banner section to welcome users and set the tone.
+- Our Features Section sections
+- Statistics :
+  - Number of Parcel Booked
+  - Number of Parcel Delivered
+  - Number of People Using Your App(Number of registered users)
+-  The Top 5 Delivery Man Section 
+
+### Login Page
+- User-friendly login form with a registration toggle link for new users.
+- Seamless authentication with Google.
+
+
+### Registration Page
+- Registration form with a toggle link to the login page.
+- Registration with uploading profile image
+- Quick registration via Google.
+
+### User Dashboard
+- Book a Parcel : This page will let the user to book a parcel
+- My Parcels : This page contain all the parcels booked by the logged in
+user in a tabular form
+- My Profile : Logged In user Profile Information In This page
+
+### Delivery Man Dashboard
+- My Delivery List : This page contain all the parcels assigned to
+the logged in delivery man. 
+- My Reviews : In this page contain all the reviews from the
+Users to this logged in delivery man in card form
+
+### Admin Dashboard
+- statistics page
+- All Parcels: In this page contain all the booked parcels by users. Admin Can manage Booking like selecte the delivery man for the parcel.
+- All Delivery Men : contain all the delivery men info
+- All User : contain all the User men info
+
+
+
+
