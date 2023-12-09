@@ -5,6 +5,11 @@ export const getAllUserData = async ({role}) => {
    const { data } = await axiosSecure.get(`/all-users?role=${role}`);
    return data;
 }
+// get Admin Statistics data
+export const getAdminStatisticsData = async () => {
+   const { data } = await axiosSecure.get(`/admin-state`);
+   return data;
+}
 
 
 // get Users data by email
@@ -15,7 +20,7 @@ export const getUserDatabyEmail = async (email) => {
 
 // Update User Data in db
 export const updateUserData = async (id, updatedData) => {
-   console.log(id, updatedData);
+   // console.log(id, updatedData);
    const { data } = await axiosSecure.patch(`/update-user-data/${id}`, updatedData);
    console.log(data);
    return data;

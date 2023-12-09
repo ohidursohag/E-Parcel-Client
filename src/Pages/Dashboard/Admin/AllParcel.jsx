@@ -10,8 +10,10 @@ import ManageBookingModal from "../../../Components/Modal/ManageBookingModal";
 const AllParcel = () => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [bookingId, setBookingId] = useState(null);
-    const { allBookings } = useGetAllBookingsData({ deliveryManId:'' })
+    const { allBookings } = useGetAllBookingsData({ deliveryManId: '' })
+    
     // console.log(allBookings);
+
     const role = 'deliveryMan';
     const { allUser: allDeliveryMan } = useGetAllUserData({ role })
     const { user } = useAuth()

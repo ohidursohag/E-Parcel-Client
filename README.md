@@ -1,5 +1,34 @@
 # E-Parcel
-Live Link-  [E-Parcel](https://e-parcel-f5214.web.app/) 
+### Live Link-  [E-Parcel](https://e-parcel-f5214.web.app/) 
+
+
+### Client Side Repository - [E-Parcel-Client](https://github.com/ohidursohag/E-Parcel-Client)
+### Server Side Repository - [E-Parcel-Server](https://github.com/ohidursohag/E-Parcel-Server)
+
+
+
+## All the packages used in this project:
+- [tailwindcss](https://tailwindcss.com/)
+- [daisyui](https://daisyui.com/)
+- [@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query)
+- [@smastrom/react-rating](https://react-rating-buo7.onrender.com/#basic_usage_ro)
+- [axios](https://www.npmjs.com/package/axios)
+- [react-router-dom](https://reactrouter.com/)
+- [react-helmet-async](https://www.npmjs.com/package/react-helmet-async)
+- [react-hot-toast](https://www.npmjs.com/package/react-hot-toast)
+- [sweetalert2](https://sweetalert2.github.io/)
+- [react-icons](https://www.npmjs.com/package/react-icons)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [react-spinners](https://www.npmjs.com/package/react-spinners)
+- [@stripe/react-stripe-js](https://www.npmjs.com/package/@stripe/react-stripe-js)
+- [@stripe/stripe-js](https://www.npmjs.com/package/@stripe/stripe-js)
+- [firebase](https://www.npmjs.com/package/firebase)
+- [lottie-react](https://www.npmjs.com/package/lottie-react)
+- [apexcharts](https://apexcharts.com/)
+- [react-countup](https://www.npmjs.com/package/react-countup)
+- [react-hook-form](https://react-hook-form.com/)
+- [react-simple-captcha](https://www.npmjs.com/package/react-simple-captcha)
+- [swiper](https://swiperjs.com/)
 
 ## Features
 
