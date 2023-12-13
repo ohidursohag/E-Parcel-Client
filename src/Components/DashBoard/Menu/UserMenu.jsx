@@ -1,6 +1,6 @@
 import MenuItem from "../SideBar/MenuItem";
 import { FaBox, FaTruckArrowRight } from "react-icons/fa6";
-
+import { MdPaid } from "react-icons/md";
 const UserMenu = () => {
 return(
    <>
@@ -13,6 +13,11 @@ return(
          icon={FaBox}
          label='My Parcels'
          address='/dashboard/user/my-parcels'
+      />
+      <MenuItem
+         icon={MdPaid}
+         label='My Payment History'
+         address='/dashboard/user/my-payment-history'
       />
    </>
 )}

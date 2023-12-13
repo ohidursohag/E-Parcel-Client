@@ -12,7 +12,7 @@ const AllDeliveryMen = () => {
     console.log(allDeliveryMan);
 return(
     <div>
-        <Title title="All Users " />
+        <Title title="All Delivery Man " />
         <div className=" mx-auto bg-white px-5 py-10">
             <div className="text-3xl font-bold font-cinzel flex justify-between">
                 <h2 >Total Users: {allDeliveryMan?.length}</h2>

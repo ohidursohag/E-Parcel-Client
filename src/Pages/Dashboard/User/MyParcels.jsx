@@ -10,10 +10,13 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import ReviewModal from "../../../Components/Modal/ReviewModal";
 import { useState } from "react";
+import PaymentModal from "../../../Components/Modal/PaymentModal";
 
 const MyParcels = () => {
     const [isShowModal, setIsShowModal] = useState(false);
+    const [isShowPaymentModal, setIsShowPaymentModal] = useState(false);
     const [deliveryManId, setDeliveryManId] = useState('');
+    const [bookingData, setBookingData] = useState({});
     // const { updateUserInfo } = useUpdateUserData()
     const { userBookings, isLoading } = useUserBookings()
     const { mutate } = useUpdateBookingsData();
@@ -62,7 +65,7 @@ const MyParcels = () => {
 
                 {/* Table */}
                 <div className="overflow-x-auto my-10 rounded-t-lg shadow">
-                    <table className="table table-sm  w-full  ">
+                    <table className="table table-xs  w-full  ">
                         {/* head */}
                         <thead className="bg-orange-500  h-[50px]   text-white ">
                             <tr className=" ">
@@ -71,8 +74,9 @@ const MyParcels = () => {
                                 <th className="">Parcel</th>
                                 <th>Delivery Dates</th>
                                 <th>Delivery Man</th>
-                                <th className="w-[100px]">Booking Status</th>
-                                <th className="w-[150px]">Actions</th>
+                                <th className="">Booking Status</th>
+                                <th className="">Parment Status</th>
+                                <th className="">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="text-[#737373]">
@@ -108,6 +112,21 @@ const MyParcels = () => {
                                     <td>
                                         <div className=" font-medium text-gray-600  ">{booking?.status}</div>
                                     </td>
+                                    <td className="text-center">
+                                        {
+                                            booking?.PaymentStatus === 'paid'
+                                                ? <p className="text-green-500 text-base font-bold">Paid</p>
+                                                : <button
+                                                    onClick={() => {
+                                                        setIsShowPaymentModal(true)
+                                                        setBookingData(booking)
+                                                    }}
+                                                    className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#d1b254]  hover:bg-[#d1b254] ${booking?.status === 'canceled' ? 'hidden' : ''}`}>
+                                                    <FaCreditCard size={20} color="white" /> Pay
+                                                </button>
+                                        }
+                                        
+                                    </td>
                                     <th>
                                         <div className="flex  flex-col gap-3">
                                             <Link to={`/dashboard/user/update-booking/${booking?._id}`}
@@ -129,10 +148,7 @@ const MyParcels = () => {
                                                 <GiStarsStack size={20} color="white" /> Review
                                             </button>
 
-                                            <button
-                                                className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#d1b254]  hover:bg-[#d1b254] ${booking?.status === 'canceled' ? 'hidden' : ''}`}>
-                                                <FaCreditCard size={20} color="white" /> Pay
-                                            </button>
+                                            
                                         </div>
 
                                     </th>
@@ -146,6 +162,11 @@ const MyParcels = () => {
                 isShowModal={isShowModal}
                 setIsShowModal={setIsShowModal}
                 deliveryManId={deliveryManId}
+            />
+            <PaymentModal
+                isShowPaymentModal={isShowPaymentModal}
+                setIsShowPaymentModal={setIsShowPaymentModal}
+                bookingData={bookingData}
             />
         </div>
     )

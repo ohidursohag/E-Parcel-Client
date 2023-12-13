@@ -22,6 +22,7 @@ import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
 import UpdateBookingsData from "../Pages/Dashboard/User/UpdateBookingsData";
 import UpdateProfile from "../Pages/Dashboard/Common/UpdateProfile";
+import PaymentHistory from "../Pages/Dashboard/User/PaymentHistory";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -59,6 +60,10 @@ const myCreatedRoutes = createBrowserRouter([
          {
             path: 'user/statistics',
             element: <PrivateRoute><UserRoute><UserStatistics /></UserRoute></PrivateRoute>
+         },
+         {
+            path: 'user/my-payment-history',
+            element: <PrivateRoute><UserRoute><PaymentHistory /></UserRoute></PrivateRoute>
          },
          {
             path: 'user/my-parcels',
