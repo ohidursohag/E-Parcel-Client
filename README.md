@@ -10,8 +10,8 @@
 email : ohidursohag@gmail.com 
 
 password : @@Sohag9595
-### Delivery Man : abulhashem@gmail.com
-email : ohidursohag@gmail.com 
+### Delivery Man : 
+email : abulhashem@gmail.com 
 
 password : @@Sohag9595
 ##
