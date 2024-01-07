@@ -167,6 +167,7 @@ const MyParcels = () => {
                 isShowPaymentModal={isShowPaymentModal}
                 setIsShowPaymentModal={setIsShowPaymentModal}
                 bookingData={bookingData}
+                
             />
         </div>
     )

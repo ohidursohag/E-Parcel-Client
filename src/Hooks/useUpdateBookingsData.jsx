@@ -14,7 +14,6 @@ const useUpdateBookingsData = () => {
          queryClient.invalidateQueries({ queryKey: ["all_bookings"] });        
       },
    })
-
    return {mutate}
 }
 export default useUpdateBookingsData;

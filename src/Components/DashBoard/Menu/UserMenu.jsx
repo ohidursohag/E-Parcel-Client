@@ -16,7 +16,7 @@ return(
       />
       <MenuItem
          icon={MdPaid}
-         label='My Payment History'
+         label='Payment History'
          address='/dashboard/user/my-payment-history'
       />
    </>

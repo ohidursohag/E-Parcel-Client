@@ -8,9 +8,11 @@ import toast from 'react-hot-toast';
 import './PaymentForm.css'
 import { addPaymentDetails, createPaymentIntent } from '../../Api/payments';
 import useUpdateBookingsData from '../../Hooks/useUpdateBookingsData';
+import useUserBookings from '../../Hooks/useUserBookings';
 const PaymentForm = ({ bookingData, closeModal }) => {
    const { mutate: updateBooking } = useUpdateBookingsData();
-   const [processing, setProcessing] = useState(false)
+   const { refetch: reloadBookingsData } = useUserBookings()
+   const [processing, setProcessing] = useState(false);
    const { user } = useAuth()
    const stripe = useStripe();
    const elements = useElements();
@@ -97,10 +99,10 @@ const PaymentForm = ({ bookingData, closeModal }) => {
          const id = bookingData?._id;
          try {
             updateBooking({ id, updatedBookingData });
-
             const res = await addPaymentDetails(paymentDetails)
             console.log(res);
             toast.success('Payment Success', { id: toastId })
+            reloadBookingsData()
             setProcessing(false)
             closeModal()
          } catch (error) {

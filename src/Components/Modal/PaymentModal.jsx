@@ -36,6 +36,7 @@ const PaymentModal = ({ isShowPaymentModal, setIsShowPaymentModal, bookingData }
                            <PaymentForm
                               bookingData={bookingData}
                               closeModal={closeModal}
+                              
                            />
                         </Elements>
 
