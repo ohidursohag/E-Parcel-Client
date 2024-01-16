@@ -14,7 +14,7 @@ const DropDown = () => {
          <div
             // onClick={() => handleDropDown}
             onClick={() => setIsOpen(!isOpen)}
-            className='px-2 py-2 h-[40px] md:py-1 md:px-2 border-[1px] bg-orange-500 border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
+            className='px-2 py-2 h-[40px] md:py-1  md:px-2 border-[1px] bg-orange-500 border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
          >
             <AiOutlineMenu color="white" />
             <div className='rounded-full w-[30px] h-[30px] bg-white'>
@@ -41,22 +41,22 @@ const DropDown = () => {
                      <>
                         <Link
                            to={`/dashboard/${role}/statistics`}
-                           className=' hover:bg-orange-100 text-gray-600 transition font-semibold px-3 py-2'
+                           className=' hover:bg-orange-300 text-gray-600 transition font-semibold px-3 py-2'
                         >
                            Dashboard
                         </Link>
                         <div
                            onClick={logOut}
-                           className=' hover:bg-orange-100 text-gray-600 px-3 py-2 transition font-semibold cursor-pointer'
+                           className=' hover:bg-orange-300 text-gray-600 px-3 py-2 transition font-semibold cursor-pointer'
                         >
                            Logout
                         </div>
                      </>
                   ) : (
                      <>
-                           <Link to='/login' className= 'hover:bg-orange-100 text-gray-600 px-3 py-2 font-semibold  '>Login</Link>
+                           <Link to='/login' className= 'hover:bg-orange-300 text-gray-600 px-3 py-2 font-semibold  '>Login</Link>
 
-                           <Link to='/register' className= 'hover:bg-orange-100 text-gray-600 px-3 py-2 font-semibold '>Register</Link>                       
+                           <Link to='/register' className= 'hover:bg-orange-300 text-gray-600 px-3 py-2 font-semibold '>Register</Link>                       
                      </>
                   )}
                </div>
