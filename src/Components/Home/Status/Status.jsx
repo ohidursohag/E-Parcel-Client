@@ -35,7 +35,6 @@ return(
                <CountUp end={allBookings?.data?.userCount} duration={3} />
             </div>
          </div>
-
       </div>
    </div>
    )

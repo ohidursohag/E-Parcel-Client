@@ -7,13 +7,12 @@ import siteBg from "../assets/image/bg.png"
 const MainLayout = () => {
     const navigation = useNavigation()
 return(
-    <div style={{backgroundImage: `url(${siteBg})`}} className="font-ubuntu bg-[#FFF3DF]  bg-no-repeat">
+    <div style={{backgroundImage: `url(${siteBg})`}} className="font-ubuntu bg-[#FFF3DF] bg-fixed bg-no-repeat">
         <NavBar/>
         <div className="min-h-[calc(100vh-107px)]">
             {
                 navigation.state === 'loading' ? <LoadingAnimation /> : <Outlet />
-            }
-            
+            }            
         </div>
         <Footer/>
    </div>

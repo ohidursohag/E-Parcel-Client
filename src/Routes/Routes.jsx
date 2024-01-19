@@ -23,6 +23,7 @@ import UserRoute from "./UserRoute";
 import UpdateBookingsData from "../Pages/Dashboard/User/UpdateBookingsData";
 import UpdateProfile from "../Pages/Dashboard/Common/UpdateProfile";
 import PaymentHistory from "../Pages/Dashboard/User/PaymentHistory";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -31,6 +32,10 @@ const myCreatedRoutes = createBrowserRouter([
       errorElement: <ErrorPage />,
       children: [
          { index: true, element: <Home /> },
+         {
+            path:'contact-us',
+            element: <ContactUs/>
+         }
       ]
    },
    { path: '/login', element: <Login /> },

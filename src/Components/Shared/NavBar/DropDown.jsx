@@ -4,14 +4,16 @@ import { AiOutlineMenu } from "react-icons/ai";
 import avatarImg from '../../../assets/image/avatar.webp'
 import { Link, NavLink } from "react-router-dom";
 import useUserRole from "../../../Hooks/useUserRole";
+import useClickOutSide from "../../../Hooks/useClickOutSide";
 const DropDown = () => {
    const { user, logOut } = useAuth()
    const [isOpen, setIsOpen] = useState(false)
    const { role } = useUserRole();
-
+const refWraper = useClickOutSide(setIsOpen)
    return (
       <div className="">
          <div
+         ref={refWraper}
             // onClick={() => handleDropDown}
             onClick={() => setIsOpen(!isOpen)}
             className='px-2 py-2 h-[40px] md:py-1  md:px-2 border-[1px] bg-orange-500 border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
@@ -29,13 +31,15 @@ const DropDown = () => {
                />
             </div>
          </div>
+         <div  className="">
          {isOpen && (
-            <div className='absolute rounded-xl shadow-md min-w-[100px] md:w-[200px]   py-5  bg-white overflow-hidden right-0  text-sm'>
+            <div  className='absolute rounded-xl shadow-md min-w-[100px] md:w-[200px]   py-5  bg-white overflow-hidden right-0  text-sm'>
                <div className='flex flex-col cursor-pointer '>
                   {
-                     user && <p className="text-lg text-center px-2 font-medium text-gray-400">{user?.displayName.slice(0,16)}</p>
+                     user && <p className="text-lg text-center px-2 font-medium text-orange-400">{user?.displayName.slice(0,16)}</p>
                   }
-                  <NavLink to='/' className={({ isActive }) => isActive ? 'text-orange-500 hover:bg-orange-100 underline font-semibold md:hidden px-3 py-2' : 'text-gray-600 hover:bg-orange-100 font-semibold text-lg md:hidden'}>Home</NavLink>
+                  <NavLink to='/' className={({ isActive }) => isActive ? 'text-orange-500 hover:bg-orange-100  font-semibold md:hidden px-3 py-2' : 'px-3 py-2 text-gray-600 hover:bg-orange-100 font-semibold  md:hidden'}>Home</NavLink>
+                  <NavLink to='/contact-us' className={({ isActive }) => isActive ? 'text-orange-500 hover:bg-orange-100  font-semibold md:hidden px-3 py-2' : ' px-3 py-2 text-gray-600 hover:bg-orange-100 font-semibold  md:hidden'}>Contact Us</NavLink>
                
                   {user ? (
                      <>
@@ -62,6 +66,7 @@ const DropDown = () => {
                </div>
             </div>
          )}
+         </div>
       </div>
    )
 }
