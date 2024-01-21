@@ -12,10 +12,9 @@ const TopDeliveryMen = ({ allBookings }) => {
    // console.log(topDeliveryMan);
    return (
       <div>
-         <h1 className="text-3xl font-bold text-gray-800 mb-5">Our Top Delivery Mens</h1>
+         <SectionTitle>Our Top Delivery Mens</SectionTitle>
          <div>
             <Swiper
-
                slidesPerView={1}
                spaceBetween={20}
                pagination={{
@@ -59,6 +58,7 @@ const TopDeliveryMen = ({ allBookings }) => {
 }
 
 import PropTypes from 'prop-types';
+import SectionTitle from '../../Shared/Utilities/SectionTitle';
 TopDeliveryMen.propTypes = {
    allBookings: PropTypes.object
 }

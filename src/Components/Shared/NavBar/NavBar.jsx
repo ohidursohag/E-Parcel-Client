@@ -11,7 +11,7 @@ const NavBar = () => {
          <Container>
             <div className="flex justify-between items-center relative py-2">
                <Logo />
-               <div className="hidden items-center gap-10 md:flex">
+               <div className="hidden items-center gap-5 md:flex">
                   <NavLinks />
                </div>
                <div className="flex items-center gap-2">

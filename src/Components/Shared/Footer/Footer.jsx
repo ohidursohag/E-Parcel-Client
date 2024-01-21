@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import Logo from '../Logo';
 import Container from '../Container';
-
+import { FaLinkedin, FaTwitterSquare } from "react-icons/fa";
+import { FaSquareFacebook, FaSquareInstagram } from "react-icons/fa6";
 const Footer = () => {
    return (
       <div className=' bg-black text-white'>
@@ -44,12 +45,12 @@ const Footer = () => {
                         <p className="text-gray-300 "><span className='text-orange-500'>Email:</span> support@e-parcel.com.bd</p>
                         <p className="text-gray-300 "><span className='text-orange-500'>Call Us:</span> +880 9642 500 500</p>
                      </div>
-                     <div className="flex gap-4 hover:cursor-pointer">
-                        <img src="https://www.svgrepo.com/show/303114/facebook-3-logo.svg" width="30" height="30" alt="fb" />
-                        <img src="https://www.svgrepo.com/show/303115/twitter-3-logo.svg" width="30" height="30" alt="tw" />
-                        <img src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg" width="30" height="30" alt="inst" />
-
-                     </div>
+                     <div className="flex gap-5">
+            <Link to=''><FaLinkedin color="#f97316" className="hover:scale-110 duration-200" size={30}/> </Link>
+            <Link to=''><FaSquareFacebook color="#f97316" className="hover:scale-110 duration-200" size={30}/> </Link>
+            <Link to=''><FaTwitterSquare color="#f97316" className="hover:scale-110 duration-200" size={30}/> </Link>
+            <Link to=''><FaSquareInstagram color="#f97316" className="hover:scale-110 duration-200" size={30}/> </Link>
+          </div>
 
                   </nav>
                </div>

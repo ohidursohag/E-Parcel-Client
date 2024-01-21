@@ -24,6 +24,7 @@ import UpdateBookingsData from "../Pages/Dashboard/User/UpdateBookingsData";
 import UpdateProfile from "../Pages/Dashboard/Common/UpdateProfile";
 import PaymentHistory from "../Pages/Dashboard/User/PaymentHistory";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -35,7 +36,11 @@ const myCreatedRoutes = createBrowserRouter([
          {
             path:'contact-us',
             element: <ContactUs/>
-         }
+         },
+         {
+            path:'about-us',
+            element: <AboutUs/>
+         },
       ]
    },
    { path: '/login', element: <Login /> },

@@ -5,7 +5,7 @@ const PageHeader = ({children}) => {
     <>
        <div
         style={{ backgroundImage: `url(${banner})` }}
-        className="h-[250px] md:h-[300px] xl:h-[400px] bg-left-bottom bg-cover lg:bg-center relative overflow-hidden before:absolute before:inset-0 before:block before:bg-black/70 before: before:z-[1]  flex justify-center items-center"
+        className="h-[250px] md:h-[300px] xl:h-[500px] bg-left-bottom bg-cover lg:bg-center relative overflow-hidden before:absolute before:inset-0 before:block before:bg-gray-900/90 before: before:z-[1]  flex justify-center items-center"
       >
         <div className="relative z-10 w-full text-center flex justify-center items-center">
           <div className="absolute  inset-x-0 text-[60px] md:text-[100px] xl:text-[180px] font-bold z-[-1] leading-none font-inter text-orange-500/20">

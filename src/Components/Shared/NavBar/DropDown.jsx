@@ -39,6 +39,7 @@ const refWraper = useClickOutSide(setIsOpen)
                      user && <p className="text-lg text-center px-2 font-medium text-orange-400">{user?.displayName.slice(0,16)}</p>
                   }
                   <NavLink to='/' className={({ isActive }) => isActive ? 'text-orange-500 hover:bg-orange-100  font-semibold md:hidden px-3 py-2' : 'px-3 py-2 text-gray-600 hover:bg-orange-100 font-semibold  md:hidden'}>Home</NavLink>
+                  <NavLink to='/about-us' className={({ isActive }) => isActive ? 'text-orange-500 hover:bg-orange-100  font-semibold md:hidden px-3 py-2' : ' px-3 py-2 text-gray-600 hover:bg-orange-100 font-semibold  md:hidden'}>About Us</NavLink>
                   <NavLink to='/contact-us' className={({ isActive }) => isActive ? 'text-orange-500 hover:bg-orange-100  font-semibold md:hidden px-3 py-2' : ' px-3 py-2 text-gray-600 hover:bg-orange-100 font-semibold  md:hidden'}>Contact Us</NavLink>
                
                   {user ? (
