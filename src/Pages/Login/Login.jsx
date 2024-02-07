@@ -22,7 +22,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         // console.log(data);
-        const toastId = toast.loading('Loginingg...')
+        const toastId = toast.loading('Logining...')
         const email = data.email;
         const password = data.password;
         const captchaInput = data.captchaInput;

@@ -25,6 +25,7 @@ import UpdateProfile from "../Pages/Dashboard/Common/UpdateProfile";
 import PaymentHistory from "../Pages/Dashboard/User/PaymentHistory";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import Pricing from "../Pages/Pricing/Pricing";
 
 const myCreatedRoutes = createBrowserRouter([
    {
@@ -40,6 +41,10 @@ const myCreatedRoutes = createBrowserRouter([
          {
             path:'about-us',
             element: <AboutUs/>
+         },
+         {
+            path:'pricing',
+            element: <Pricing/>
          },
       ]
    },

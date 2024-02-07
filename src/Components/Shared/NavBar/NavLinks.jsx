@@ -10,6 +10,7 @@ const NavLinks = () => {
       <>
          <NavLink to='/' className={({ isActive }) => isActive ? 'text-orange-500 border-b-[3px] border-b-orange-500 font-semibold text-lg ' : 'text-gray-900 font-semibold text-lg'}>Home</NavLink>
          <NavLink to='/about-us' className={({ isActive }) => isActive ? 'text-orange-500 border-b-[3px] border-b-orange-500 font-semibold text-lg ' : 'text-gray-900 font-semibold text-lg'}>About Us</NavLink>
+         <NavLink to='/pricing' className={({ isActive }) => isActive ? 'text-orange-500 border-b-[3px] border-b-orange-500 font-semibold text-lg ' : 'text-gray-900 font-semibold text-lg'}>Pricing</NavLink>
          <NavLink to='/contact-us' className={({ isActive }) => isActive ? 'text-orange-500 border-b-[3px] border-b-orange-500 font-semibold text-lg ' : 'text-gray-900 font-semibold text-lg'}>Contact Us</NavLink>
          {
          user?.email &&

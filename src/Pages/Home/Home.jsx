@@ -8,6 +8,8 @@ import ContactForm from "../../Components/Shared/Contact/ContactForm";
 import ContactAddress from "../../Components/Shared/Contact/ContactAddress";
 import SectionTitle from "../../Components/Shared/Utilities/SectionTitle";
 import WhyEParcel from "../../Components/Home/OurFeatures/WhyEParcel";
+import DeliveryCharges from "../../Components/Shared/Pricing/DeliveryCharges";
+import OurStory from "../../Components/Shared/AboutUs/OurStory";
 
 const Home = () => {
   const { data: allBookings } = useQuery({
@@ -25,10 +27,17 @@ const Home = () => {
           <WhyEParcel/>
           <Status allBookings={allBookings} />
         </div>
+        <div className="my-16">        
+          <OurStory/>
+        </div>
+        <div className="my-16">        
+          <DeliveryCharges/>
+        </div>
         <div className="my-16">
         <SectionTitle>Our Location</SectionTitle>
           <ContactAddress/>
         </div>
+        
         <div className="my-16">
           <TopDeliveryMen allBookings={allBookings} />
         </div>

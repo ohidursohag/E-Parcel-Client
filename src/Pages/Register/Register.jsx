@@ -51,7 +51,7 @@ const Register = () => {
                 // save/update user info to database
                 const data = await saveUserData(user, userRole,phone)
                 console.log(data);
-                toast.success('Registration Successfull and Logged In', { id: toastId })
+                toast.success('Registration Successful and Logged In', { id: toastId })
                 navigate(loc?.state ? loc.state : '/', { replace: true })
             } else {
                 logOut()

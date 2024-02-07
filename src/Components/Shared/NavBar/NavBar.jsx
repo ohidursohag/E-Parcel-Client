@@ -7,7 +7,7 @@ import NavLinks from "./NavLinks";
 
 const NavBar = () => {
    return (
-      <div  className="w-full fixed z-50 bg-orange-200/20 backdrop-blur-sm rounded-lg clip">
+      <div  className="w-full fixed z-50 rounded-lg clip">
          <Container>
             <div className="flex justify-between items-center relative py-2">
                <Logo />

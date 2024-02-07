@@ -1,22 +1,26 @@
 
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo/logo.png'
+import logo from '../../assets/logo/logo.svg'
 const Logo = () => {
-return(
-   <>       
-      <Link to='/'>
-         <div className='w-max'>
-            <div className='flex leading-none items-end mb-[4px] gap-1'>
-               <figure className='w-10 lg:w-14 lg:h-12 bg-orange-500 flex items-center justify-center rounded-md'>
-                  <img className='w-8 lg:w-10' src={logo} alt="" />
-               </figure>
-               <div className='text-[40px] lg:text-[67px] font-black -mb-[5px] lg:-mb-[8px]'>E</div>
-               <div className='text-[25px] lg:text-[40px] -mb-[3px] lg:-mb-[5px] font-bold text-orange-500 tracking-[1px] '>Parcel</div>
+return (
+  <>
+    <Link to="/">
+      <div className="w-max">
+        <div className="flex leading-none   gap-1">
+          <figure className=" flex items-center justify-center rounded-md">
+            <img className="w-14 lg:w-14" src={logo} alt="" />
+          </figure>
+          <div className="flex items-center  font-Black-Ops-One">
+            <div className="text-[40px] lg:text-[50px] lg:leading-[55px]  ">
+              e
             </div>
-            <hr className='border-2 border-gray-500' />
-            <div className='text-[12px] lg:text-base font-railway italic text-orange-500 '>Streamlined Parcel Solutions</div>
-         </div>
-      </Link>
-   </>
-)}
+            <div className="text-[25px] lg:text-[50px] lg:leading-[51px]  text-orange-500 ">
+              Parcel
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  </>
+);}
 export default Logo;
