@@ -9,12 +9,16 @@ const Footer = () => {
     <div className=" bg-black text-white">
       <img className="w-full h-" src={wave} alt="" />
       <Container>
-        <footer className=" mx-auto flex flex-col lg:flex-row justify-between  py-10  items-center">
-          <aside className="mx-auto">
-            <div className="w-64 space-y-3  md:mx-0 mx-auto text-center md:text-left">
+        <footer className=" mx-auto flex flex-col lg:flex-row justify-between gap-5 py-10  items-center">
+          <div className="max-w-[300px] space-y-2  md:mx-0 mx-auto text-center md:text-left">
+            <div className="w-max mx-auto md:mx-0">
               <Logo />
             </div>
-          </aside>
+            <div className="text-justify">
+              Our comprehensive logistics services ensure timely and secure
+              delivery for your business
+            </div>
+          </div>
           <div className="flex flex-1 justify-between flex-col md:flex-row gap-10 lg:gap-0 mt-10">
             <nav className="lg:mx-auto flex gap-1 flex-col">
               <header className="text-lg font-semibold text-orange-500">

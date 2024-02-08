@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Rachel Green",
+    "position": "Founder & CEO",
+    "quote": "Driving deliveries, exceeding expectations.",
+    "image": "https://assets-global.website-files.com/60accd6bf378570a40585e3a/60f55db2d73fc928499ad6fa_Layer-3-284x284.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ross Geller",
+    "position": "Head of Operations",
+    "quote": "Efficient logistics for seamless deliveries.",
+    "image": "https://assets-global.website-files.com/65636268c62f3d0464956d0b/65636268c62f3d0464956eac_img%20worker-10.png"
+  },
+  {
+    "id": 3,
+    "name": "Monica Geller",
+    "position": "Customer Experience Manager",
+    "quote": "Customer satisfaction is our top priority.",
+    "image": "https://assets-global.website-files.com/621cb0f61153e187c55962f8/62204b416e44ea2a794f8a9b_08-p-500.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "Chandler Bing",
+    "position": "Technical Lead",
+    "quote": "Tech solutions for smooth operations.",
+    "image": "https://assets-global.website-files.com/65636268c62f3d0464956d0b/65636268c62f3d0464956ea9_Rectangle%201109%20(1).png"
+  },
+  {
+    "id": 5,
+    "name": "Phoebe Buffay",
+    "position": "Marketing Director",
+    "quote": "Spreading happiness, one delivery at a time.",
+    "image": "https://assets-global.website-files.com/60accd6bf378570a40585e3a/60f55df6f9729aa866eb8364_Layer-6.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Joey Tribbiani",
+    "position": "Delivery Specialist",
+    "quote": "Delivering with a smile, every mile.",
+    "image": "https://assets-global.website-files.com/60accd6bf378570a40585e3a/60f55ea5d73fc955049ad9b8_Layer-12-284x284.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Gunther Smith",
+    "position": "Customer Support Lead",
+    "quote": "Supporting you, round the clock.",
+    "image": "https://assets-global.website-files.com/60accd6bf378570a40585e3a/60f55de10dbd2227b9cdc676_Layer-5-284x284.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Janice Litman",
+    "position": "HR Manager",
+    "quote": "Building a team that delivers excellence.",
+    "image": "https://assets-global.website-files.com/60accd6bf378570a40585e3a/60f55e489441c976d7ed22c7_Layer-9-284x284.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Richard Burke",
+    "position": "Finance Director",
+    "quote": "Balancing the books for sustainable growth.",
+    "image": "https://assets-global.website-files.com/60accd6bf378570a40585e3a/60f55a5f21844005d76ef1e2_Layer-1-284x284.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Estelle Leonard",
+    "position": "Legal Advisor",
+    "quote": "Legal support for a secure journey ahead.",
+    "image": "https://assets-global.website-files.com/621cb0f61153e187c55962f8/621f4bf1e4584a0fc975b47b_06.jpg"
+  }
+]
