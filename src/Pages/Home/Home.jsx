@@ -34,7 +34,7 @@ const Home = () => {
           <OurStory />
         </div>
         <div className="my-16">
-          <SectionTitle>Meet Our Team</SectionTitle>
+          <SectionTitle className="">Meet Our Team</SectionTitle>
           <div id="" className="flex justify-center flex-wrap gap-5">
             {ourTeam.slice(0, 5).map((member) => (
               <TeamCard key={member.id} member={member} />

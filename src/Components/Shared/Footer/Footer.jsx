@@ -4,9 +4,11 @@ import Container from "../Container";
 import { FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 import { FaSquareFacebook, FaSquareInstagram } from "react-icons/fa6";
 import wave from "../../../assets/svgs/waveTop.svg";
+import bgFooter from "../../../assets/image/bg-footer.jpg";
+
 const Footer = () => {
   return (
-    <div className=" bg-black text-white">
+    <div style={{backgroundImage: `url(${bgFooter})`}} className=" bg-contain bg-center bg-blend-overlay bg-black bg-opacity-[92%] text-white">
       <img className="w-full h-" src={wave} alt="" />
       <Container>
         <footer className=" mx-auto flex flex-col lg:flex-row justify-between gap-5 py-10  items-center">

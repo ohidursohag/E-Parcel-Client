@@ -3,7 +3,7 @@ import TeamCard from "../../Cards/TeamCard";
 import SectionTitle from "../Utilities/SectionTitle";
 import useTeamData from "../../../Hooks/useTeamData";
 import { useState } from "react";
-import { FaTruckArrowRight } from "react-icons/fa6";
+
 
 const OurTeam = () => {
   const { ourTeam } = useTeamData()
