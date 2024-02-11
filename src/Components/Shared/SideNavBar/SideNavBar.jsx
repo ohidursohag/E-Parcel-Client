@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import useAuth from "../../../Hooks/useAuth";
 import useUserRole from "../../../Hooks/useUserRole";
-import MenuItem from "../../DashBoard/SideBar/MenuItem";
+import MenuItem from "../Utilities/MenuItem";
 import { FaHome } from "react-icons/fa";
 import { BiSolidContact } from "react-icons/bi";
 import {
@@ -18,7 +18,7 @@ import { IoSettingsSharp } from "react-icons/io5";
 const SideNavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
   const { user, logOut } = useAuth();
   const { role } = useUserRole();
-//   const refWraper = useClickOutSide(setSideBarIsOpen);
+  //   const refWraper = useClickOutSide(setSideBarIsOpen);
 
   return (
     <div

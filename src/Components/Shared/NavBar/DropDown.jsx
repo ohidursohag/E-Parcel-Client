@@ -1,6 +1,6 @@
 
 import useAuth from "../../../Hooks/useAuth";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineBars } from "react-icons/ai";
 import avatarImg from '../../../assets/image/avatar.webp'
 import PropTypes from "prop-types";
 const DropDown = ({ sideBarIsOpen, setSideBarIsOpen }) => {
@@ -11,9 +11,10 @@ const DropDown = ({ sideBarIsOpen, setSideBarIsOpen }) => {
     <>
       <div
         onClick={() => setSideBarIsOpen(!sideBarIsOpen)}
-        className=" p-1 sm:p-2 sm:px-2  bg-orange-500  flex  items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition"
+        className=" p-1  sm:px-2  bg-orange-500  flex  items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition"
       >
-        <AiOutlineMenu size={22} color="white" />
+
+        <AiOutlineBars size={25} color="white" />
         {user ? (
           <div className="rounded-full w-[30px] h-[30px] bg-white hidden sm:block">
             {/* Avatar */}
