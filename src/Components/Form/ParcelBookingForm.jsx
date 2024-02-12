@@ -227,12 +227,12 @@ const ParcelBookingForm = () => {
             {/* delivery Address, Latitude, Longitude */}
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5 '>
                <div className='space-y-1 '>
-                  <label className='block text-gray-600 font-medium'>Parcel Delivery Address</label>
+                  <label className='block text-gray-600 font-medium'>Delivery Address</label>
                   <input
                      className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                      {...register('deliveryAddress', { required: true })}
                      type='text'
-                     placeholder='Parcel Delivery Address'
+                     placeholder='Delivery Address'
                   />
                   {errors.deliveryAddress?.type === 'required' && <p className='text-red-500'>required</p>}
                </div>

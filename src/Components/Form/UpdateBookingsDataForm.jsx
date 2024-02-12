@@ -198,35 +198,35 @@ const UpdateBookingsDataForm = () => {
             {/* delivery Address, Latitude, Longitude */}
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5 '>
                <div className='space-y-1 '>
-                  <label className='block text-gray-600 font-medium'>Parcel Delivery Address</label>
+                  <label className='block text-gray-600 font-medium'>Delivery Address</label>
                   <input
                      className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                      {...register('deliveryAddress', { required: true })}
                      type='text'
-                     placeholder='Parcel Delivery Address'
+                     placeholder='Delivery Address'
                   />
                   {errors.deliveryAddress?.type === 'required' && <p className='text-red-500'>required</p>}
                </div>
 
-               <div className='grid grid-cols-1 md:grid-cols-2 gap-5 '>
+               <div className='grid grid-cols-2 gap-3 '>
                   <div className='space-y-1 '>
-                     <label className='block text-gray-600 font-medium'>Delivery Address Latitude</label>
+                     <label className='block text-gray-600 font-medium'>Latitude</label>
                      <input
                         className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                         {...register('latitude', { required: true })}
                         type='text'
-                        placeholder='Delivery Address Latitude'
+                        placeholder='Latitude'
                      />
                      {errors.latitude?.type === 'required' && <p className='text-red-500'>required</p>}
                   </div>
 
                   <div className='space-y-1 '>
-                     <label className='block text-gray-600 font-medium'>Delivery Address Longitude</label>
+                     <label className='block text-gray-600 font-medium'>Longitude</label>
                      <input
                         className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                         {...register('longitude', { required: true })}
                         type='text'
-                        placeholder='Delivery Address Longitude'
+                        placeholder='Longitude'
                      />
                      {errors.longitude?.type === 'required' && <p className='text-red-500'>required</p>}
                   </div>

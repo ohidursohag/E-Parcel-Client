@@ -36,11 +36,11 @@ const MyReviews = () => {
 
     // console.log(averageRating);
     return (
-        <div>
+        <div className="container mx-auto px-5 lg:px-10">
             <Title title='My Reviews' />
-            <div className='flex justify-between mb-5'>
-                <div className='text-2xl font-bold text-gray-700 '>Total Reviews: <span className='text-3xl text-orange-500'>{myReviews?.length}</span></div>
-                <div className='text-2xl font-bold text-gray-700 '>Average Ratings: <span className='text-3xl text-orange-500'>{averageRating}</span></div>
+            <div className='flex flex-col sm:flex-row justify-between mb-5'>
+                <div className='text-xl lg:text-3xl font-bold text-gray-700 '>Total Reviews: <span className='text-2xl lg:text-3xl text-orange-500'>{myReviews?.length}</span></div>
+                <div className='text-xl lg:text-3xl font-bold text-gray-700 '>Average Ratings: <span className='text-2xl lg:text-3xl text-orange-500'>{averageRating}</span></div>
             </div>
             <div>
                 <Swiper
@@ -63,8 +63,8 @@ const MyReviews = () => {
 
                         },
                         1024: {
-                            slidesPerView: 2,
-
+                            slidesPerView: 1,
+                        
                         },
                         1280: {
                             slidesPerView: 2,

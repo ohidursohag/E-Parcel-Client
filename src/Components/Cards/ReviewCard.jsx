@@ -9,12 +9,12 @@ const CustomRatingStyle = {
 const ReviewCard = ({ myReview }) => {
    // console.log(myReview);
    return (
-      <div className=" flex min-h-[230px]   bg-white shadow-md  rounded-lg text-gray-700 bg-clip-border mb-7">
+      <div className=" flex min-h-[230px]  bg-white shadow-md  rounded-lg text-gray-700 bg-clip-border mb-7">
          <div className=" w-[35%]  overflow-hidden text-gray-700 bg-white shadow-lg rounded-l-lg bg-clip-border">
             <img className='w-full h-full object-cover object-center' src={myReview?.userImage} alt="profile-picture" />
          </div>
          <div className="p-3 gap-3 w-[60%] flex flex-col">
-            <h4 className="block mb-2 text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+            <h4 className="block mb-2 text-xl sm:text-2xl  antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                {myReview?.userName}
             </h4>
 
