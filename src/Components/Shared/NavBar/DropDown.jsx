@@ -11,7 +11,7 @@ const DropDown = ({ sideBarIsOpen, setSideBarIsOpen }) => {
     <>
       <div
         onClick={() => setSideBarIsOpen(!sideBarIsOpen)}
-        className=" p-1  sm:px-2  bg-orange-500  flex  items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition"
+        className={`p-1 ${user?'sm:px-2':'sm:p-2 '}   bg-orange-500  flex  items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition`}
       >
 
         <AiOutlineBars size={25} color="white" />
