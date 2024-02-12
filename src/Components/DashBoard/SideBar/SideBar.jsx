@@ -26,7 +26,7 @@ const SideBar = () => {
       <div
         ref={refWraper}
         style={{ backgroundImage: `url(${bgimg})` }}
-        className="bg-contain fixed  w-full bg-black bg-opacity-80 bg-center py-2 bg-blend-overlay  flex justify-between items-center px-5 lg:hidden"
+        className="z-40 bg-contain fixed  w-full bg-black bg-opacity-80 bg-center py-2 bg-blend-overlay  flex justify-between items-center px-5 lg:hidden"
       >
         <div>
           <div className="block cursor-pointer  font-bold">
@@ -48,7 +48,7 @@ const SideBar = () => {
       </div>
       {/* Side Bar */}
       <div
-        className={`z-10 absolute md:fixed flex flex-col justify-between h-screen overflow-x-hidden w-[260px] lg:w-[300px] bg-gray-100 space-y-6 px-2 py-4 top-0 left-0 transform ${
+        className={`z-50 absolute md:fixed flex flex-col justify-between h-screen overflow-x-hidden w-[260px] lg:w-[300px] bg-gray-100 space-y-6 px-2 py-4 top-0 left-0 transform ${
           !isShow && "-translate-x-full"
         }  lg:translate-x-0  transition duration-300 ease-in-out`}
       >

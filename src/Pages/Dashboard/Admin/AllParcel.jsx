@@ -19,35 +19,36 @@ const AllParcel = () => {
     const { user } = useAuth()
 
     return (
-      <div>
+      <div className="container mx-auto px-5 lg:px-10">
         <Title title="All Parcels " />
-        <div className=" mx-auto bg-white px-5 py-10">
-          <div className="text-3xl font-bold font-cinzel flex justify-between">
+        <div className=" bg-white">
+          <div className="text-xl lg:text-3xl font-bold font-cinzel flex justify-between">
             <h2>Total Parcel: {allBookings?.length}</h2>
           </div>
 
           {/* Table */}
-          <div className="overflow-x-auto my-10 rounded-t-lg shadow">
-            <table className="table table-xs  w-full  ">
+          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 mt-1 pb-4 rounded-t-lg overflow-x-auto mb-10">
+          <div className="inline-block  min-w-full  rounded-t-lg shadow overflow-hidden">
+            <table className="min-w-full">
               {/* head */}
-              <thead className="bg-orange-500  h-[50px]   text-white ">
-                <tr className="text-base ">
-                  <th></th>
-                  <th className="">Parcel Sender</th>
-                  <th>Dates</th>
-                  <th>Delivery man</th>
-                  <th>Delivery Cost</th>
-                  <th className="">Booking Status</th>
-                  <th className="">Actions</th>
+              <thead className="bg-orange-500 h-[50px] uppercase text-white ">
+                <tr className="text-xs lg:text-sm">
+                  <th scope='col' className="min-w-10 px-5 py-2"></th>
+                  <th scope='col' className="min-w-[200px] px-3 py-2">Parcel Sender</th>
+                  <th scope='col' className="min-w-[270px] px-3 py-2">Dates</th>
+                  <th scope='col' className="min-w-[220px] px-3 py-2">Delivery man</th>
+                  <th scope='col' className="min-w-[140px] px-3 py-2">Delivery Cost</th>
+                  <th scope='col' className="min-w-[140px] px-3 py-2">Booking Status</th>
+                  <th scope='col' className="min-w-[160px] px-3 py-2">Actions</th>
                 </tr>
               </thead>
-              <tbody className="text-[#737373]">
+              <tbody className="text-[#737373] text-sm lg:text-sm">
                 {allBookings?.map((booking, index) => (
-                  <tr key={booking?._id} className="">
-                    <th className="text-lg text-center text-black font-bold">
+                  <tr key={booking?._id} className="even:bg-gray-50">
+                    <th className="text-lg text-center text-black font-bold min-w-10 px-3 py-2">
                       {index + 1}
                     </th>
-                    <td>
+                    <td className="min-w-[200px] px-3 py-2">
                       <div className="  ">
                         <div className=" border-b pb-1 border-b-orange-100  font-medium text-gray-600">
                           {booking?.senderName}
@@ -70,7 +71,7 @@ const AllParcel = () => {
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td className="min-w-[270px] px-3 py-2">
                       <div className=" border-b pb-1 border-b-orange-100">
                         <span className=" font-medium text-gray-600">
                           Booking:
@@ -96,7 +97,7 @@ const AllParcel = () => {
                         </div>
                       )}
                     </td>
-                    <td>
+                    <td className="min-w-[220px] px-3 py-2">
                       {
                         <div className="  ">
                           {booking?.deliveryManName && (
@@ -127,14 +128,14 @@ const AllParcel = () => {
                         </div>
                       }
                     </td>
-                    <th>
+                    <th className="min-w-[140px] px-3 py-2 text-center">
                       <div className=" ">
                         <span className="text-orange-500">
                           {booking?.bookingPrice} Tk.
                         </span>
                       </div>
                     </th>
-                    <td>
+                    <td className="min-w-[140px] px-3 py-2 text-center">
                       <div
                         className={`font-medium ${
                           booking?.status === "pending"
@@ -149,11 +150,11 @@ const AllParcel = () => {
                         {booking?.status}
                       </div>
                     </td>
-                    <th>
+                    <th className="min-w-[160px] px-3 py-2">
                       <div className="flex  flex-col gap-3">
                         {/* TO DO Delete Canceled Bookinks data */}
                         {/* <button
-                                                    className={`btn btn-ghost btn-sm px-5 w-full text-white bg-[#B91C1C]  hover:bg-[#B91C1C] ${booking?.status !== 'pending' ? 'hidden' : ''}`}>
+                                                    className={`btn btn-ghost btn-sm px-8  w-max mx-auto text-white bg-[#B91C1C]  hover:bg-[#B91C1C] ${booking?.status !== 'pending' ? 'hidden' : ''}`}>
                                                     <RxCross1 size={20} color="white" /> Cancel
                                                 </button> */}
                         {booking?.status === "pending" && (
@@ -162,7 +163,7 @@ const AllParcel = () => {
                               setIsShowModal(true);
                               setBookingId(booking?._id);
                             }}
-                            className={`btn btn-ghost btn-sm px-5 w-full bg-orange-600 text-white hover:bg-orange-600 `}
+                            className={`btn btn-ghost btn-sm px-8  w-max mx-auto bg-orange-600 text-white hover:bg-orange-600 `}
                           >
                             <GrSettingsOption size={20} color="white" /> Manage
                           </button>
@@ -173,6 +174,7 @@ const AllParcel = () => {
                 ))}
               </tbody>
             </table>
+          </div>
           </div>
         </div>
 

@@ -76,7 +76,7 @@ const MyParcels = () => {
               </thead>
               <tbody className="text-[#737373] text-sm lg:text-sm">
                 {userBookings?.map((booking, index) => (
-                  <tr key={booking?._id} className="even:bg-gray-100">
+                  <tr key={booking?._id} className="even:bg-gray-50">
                     <th className="text-base text-center text-black font-bold min-w-10 px-3 py-2">
                       {index + 1}
                     </th>

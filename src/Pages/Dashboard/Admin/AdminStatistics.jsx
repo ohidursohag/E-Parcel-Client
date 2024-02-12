@@ -12,7 +12,7 @@ const AdminStatistics = () => {
     
 const {adminStatData,isLoading} = useAdminState()
 
-    console.log(adminStatData);
+    // console.log(adminStatData);
     const bookingData = adminStatData?.numberOfBookingsByDate;
     const DeliveredData = adminStatData?.numberOfDeliveredByDate;
     const chartCategories = adminStatData?.bookingDates;
@@ -120,37 +120,41 @@ const {adminStatData,isLoading} = useAdminState()
         <div className="space-y-10">
             <Title title="Statistics" />
             <div className="bg-white p-5 py-10 rounded-lg ">
-                <div className="grid grid-cols-4 gap-5 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-y-10 gap-5 mb-10">
                     <HeaderStatusBox
-                        className={'bg-gradient-to-r  from-purple-500 to-purple-100'}
+                        boxShadow={'shadow-orange-500/60'}
+                        className={'bg-gradient-to-tr from-orange-600 to-orange-400 text-white '}
                         value={adminStatData?.totalUser}
                         statusName={'Total Users'}
                     >
-                        <FaUsers size={52} />
+                        <FaUsers className='w-8 h-8 text-white' />
                     </HeaderStatusBox>
                     <HeaderStatusBox
-                        className={'bg-gradient-to-r  from-cyan-500  to-cyan-100'}
+                        boxShadow={'shadow-blue-500/60'}
+                        className={'bg-gradient-to-tr  from-blue-600 to-blue-400 text-white '}
                         value={adminStatData?.totalDeliveryMan}
                         statusName={'Total Delivery Man'}
                     >
-                        <MdDeliveryDining size={52} />
+                        <MdDeliveryDining className='w-8 h-8 text-white' />
                     </HeaderStatusBox>
                     <HeaderStatusBox
-                        className={'bg-gradient-to-r  from-yellow-500  to-yellow-100'}
+                        boxShadow={'shadow-pink-500/60'}
+                        className={'bg-gradient-to-tr from-pink-600 to-pink-400 text-white '}
                         value={adminStatData?.totalParcelBooked}
                         statusName={'Total Parcel Booked'}
                     >
-                        <FaBox size={52} />
+                        <FaBox className='w-8 h-8 text-white' />
                     </HeaderStatusBox>
                     <HeaderStatusBox
-                        className={'bg-gradient-to-r  from-lime-500  to-lime-100'}
+                        boxShadow={'shadow-green-500/60'}
+                        className={'bg-gradient-to-tr  from-green-600 to-green-400 text-white '}
                         value={adminStatData?.totalParcelDelivered}
                         statusName={'Total Parcel Delivered'}
                     >
-                        <IoCheckbox size={52} />
+                        <IoCheckbox className='w-8 h-8 text-white' />
                     </HeaderStatusBox>
                 </div>
-                <div >
+                <div className="mt-10">
                     <div className="text-2xl font-bold text-gray-600">Parcel Booked By Date Chart</div>
                     <div id="barChart"></div>
                 </div>
