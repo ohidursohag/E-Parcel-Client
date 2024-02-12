@@ -6,31 +6,33 @@ import toast from "react-hot-toast";
 import { addBookingsData } from "../../Api/Parcels";
 
 import useGetCurrentUser from "../../Hooks/useGetCurrentUser";
-import useUserBookings from "../../Hooks/useUserBookings";
-import { useEffect } from "react";
-import useUpdateUserData from "../../Hooks/useUpdateUserData";
+// import useUserBookings from "../../Hooks/useUserBookings";
+// import { useEffect } from "react";
+// import useUpdateUserData from "../../Hooks/useUpdateUserData";
 
 
 const ParcelBookingForm = () => {
    const [bookingPrice, setBookingPrice] = useState(0)
    const { user } = useAuth()
-   const { currentUser, isLoading } =useGetCurrentUser()
+   const { currentUser, isLoading } = useGetCurrentUser()
    const { handleSubmit, register, formState: { errors } } = useForm();
-   const { userBookings } = useUserBookings()
-   const { updateUserInfo } = useUpdateUserData()
+   // const { userBookings } = useUserBookings()
+   // const { updateUserInfo } = useUpdateUserData()
+
    // console.log(currentUser);
-   const totalParcelBooked = userBookings?.length;
-   // ToDo: Claculate only paid amount
-   const totalSpentAmount = userBookings?.reduce((total, currenValue) => total + currenValue?.bookingPrice, 0);
-   // console.log(totalSpentAmount);
-   const id = currentUser?._id;
-   useEffect(() => {
-      const updatedUserData = {
-         totalParcelBooked,
-         totalSpentAmount
-      }
-      updateUserInfo({ id, updatedUserData })
-   }, [updateUserInfo, totalParcelBooked, totalSpentAmount, id])
+   // const totalParcelBooked = userBookings?.length;
+   // //  ToDo: Claculate only paid amount
+   // const totalSpentAmount = userBookings?.reduce((total, currenValue) => total + currenValue?.bookingPrice, 0);
+   // // console.log(totalSpentAmount);
+   // const id = currentUser?._id;
+   // useEffect(() => {
+   //    const updatedUserData = {
+   //       totalParcelBooked,
+   //       totalSpentAmount
+   //    }
+   //    updateUserInfo({ id, updatedUserData })
+   // }, [updateUserInfo, totalParcelBooked, totalSpentAmount, id])
+
 
    // console.log(currentUser);
    // Boooking Date
@@ -49,6 +51,7 @@ const ParcelBookingForm = () => {
          setBookingPrice(0);
       }
    }
+
 
    const onSubmit = (data) => {
       // console.log(data);
@@ -234,25 +237,25 @@ const ParcelBookingForm = () => {
                   {errors.deliveryAddress?.type === 'required' && <p className='text-red-500'>required</p>}
                </div>
 
-               <div className='grid grid-cols-1 md:grid-cols-2 gap-5 '>
+               <div className='grid grid-cols-2 gap-3 '>
                   <div className='space-y-1 '>
-                     <label className='block text-gray-600 font-medium'>Delivery Address Latitude</label>
+                     <label className='block text-gray-600 font-medium'>Latitude</label>
                      <input
                         className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                         {...register('latitude', { required: true })}
                         type='text'
-                        placeholder='Delivery Address Latitude'
+                        placeholder='Latitude'
                      />
                      {errors.latitude?.type === 'required' && <p className='text-red-500'>required</p>}
                   </div>
 
                   <div className='space-y-1 '>
-                     <label className='block text-gray-600 font-medium'>Delivery Address Longitude</label>
+                     <label className='block text-gray-600 font-medium'>Longitude</label>
                      <input
                         className='w-full px-4 py-3 text-gray-800 border border-orange-300 outline-none rounded-md '
                         {...register('longitude', { required: true })}
                         type='text'
-                        placeholder='Delivery Address Longitude'
+                        placeholder='Longitude'
                      />
                      {errors.longitude?.type === 'required' && <p className='text-red-500'>required</p>}
                   </div>

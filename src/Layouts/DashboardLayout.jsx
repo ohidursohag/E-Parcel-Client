@@ -3,18 +3,18 @@ import SideBar from "../Components/DashBoard/SideBar/SideBar";
 
 const DashboardLayout = () => {
   return (
-    <div>
-      <div className="relative min-h-screen md:flex">
+    <>
+      <div className="relative min-h-screen ">
         {/* Side Bar */}
         <SideBar />
-        <div className="flex-1 md:ml-64">
-          <div className="p-5 lg:p-10">
+        <div className="flex-1 pt-10 lg:pt-0 lg:ml-[300px]">
+          <div className=" ">
             {/* Outlet for dynamic contents */}
             <Outlet />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default DashboardLayout;

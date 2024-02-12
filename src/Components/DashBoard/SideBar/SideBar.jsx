@@ -13,22 +13,20 @@ import DashboardMenuItem from "./DashboardMenuItem";
 import { BsGraphUp } from "react-icons/bs";
 import bgimg from "../../../assets/image/bg-footer.jpg";
 import useClickOutSide from "../../../Hooks/useClickOutSide";
+import { IoNotifications } from "react-icons/io5";
 const SideBar = () => {
   const { logOut } = useAuth();
   const { role } = useUserRole();
   const [isShow, setIsShow] = useState(false);
   const refWraper = useClickOutSide(setIsShow);
-  // Sidebar Responsive Handler
-  const handleToggle = () => {
-    setIsShow(!isShow);
-  };
+
   return (
     <>
       {/* Small Screen Navbar */}
       <div
         ref={refWraper}
         style={{ backgroundImage: `url(${bgimg})` }}
-        className="bg-contain bg-black bg-opacity-80 bg-center py-2 bg-blend-overlay text-b-800 flex justify-between items-center px-5 md:hidden"
+        className="bg-contain fixed  w-full bg-black bg-opacity-80 bg-center py-2 bg-blend-overlay  flex justify-between items-center px-5 lg:hidden"
       >
         <div>
           <div className="block cursor-pointer  font-bold">
@@ -36,18 +34,23 @@ const SideBar = () => {
           </div>
         </div>
 
-        <button
-          onClick={handleToggle}
-          className="mobile-menu-button p-1 text-orange-500 bg-white focus:text-white focus:bg-orange-500 focus:outline-none rounded-full shadow-[0px_2px_5px_2px_rgba(249,115,22)]"
-        >
-          <AiOutlineBars size={25} />
-        </button>
+        <div className="flex gap-3 items-center">
+          <button className="text-orange-300  underline font-semibold text-lg ">
+            <IoNotifications size={30} />
+          </button>
+          <button
+            onClick={() => setIsShow(!isShow)}
+            className=" p-1 text-orange-500 bg-white focus:text-white focus:bg-orange-500 focus:outline-none rounded-full shadow-[0px_2px_5px_2px_rgba(249,115,22)]"
+          >
+            <AiOutlineBars size={25} />
+          </button>
+        </div>
       </div>
       {/* Side Bar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between h-screen overflow-x-hidden bg-gray-100 md:w-[260px] space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 absolute md:fixed flex flex-col justify-between h-screen overflow-x-hidden w-[260px] lg:w-[300px] bg-gray-100 space-y-6 px-2 py-4 top-0 left-0 transform ${
           !isShow && "-translate-x-full"
-        }  md:translate-x-0  transition duration-300 ease-in-out`}
+        }  lg:translate-x-0  transition duration-300 ease-in-out`}
       >
         <div
           style={{ backgroundImage: `url(${bgimg})` }}
@@ -68,9 +71,9 @@ const SideBar = () => {
               {role === "deliveryMan" && <DeliveryMenMenu />}
               {role === "admin" && <AdminMenu />}
             </nav>
-            <hr className="border-orange-500 border-2  mx-auto my-5" />
           </div>
           <div>
+            <hr className="border-orange-300 border-1  mx-auto my-5" />
             {" "}
             <DashboardMenuItem icon={FaHome} label="Home" address="/" />
             <DashboardMenuItem

@@ -3,11 +3,11 @@ import Container from "../Container";
 import Logo from "../Logo";
 import DropDown from "./DropDown";
 import NavLinks from "./NavLinks";
-import navBg from '../../../assets/image/bg-footer.jpg'
+import navBg from "../../../assets/image/bg-footer.jpg";
 import PropTypes from "prop-types";
 import useClickOutSide from "../../../Hooks/useClickOutSide";
 const NavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
-   const refWraper = useClickOutSide(setSideBarIsOpen);
+  const refWraper = useClickOutSide(setSideBarIsOpen);
   return (
     <div
       style={{ backgroundImage: `url(${navBg})` }}
@@ -23,9 +23,7 @@ const NavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
             <button className="text-orange-300  underline font-semibold text-lg ">
               <IoNotifications size={30} />
             </button>
-                 <div
-                    ref={refWraper}
-                 >
+            <div ref={refWraper}>
               <DropDown
                 sideBarIsOpen={sideBarIsOpen}
                 setSideBarIsOpen={setSideBarIsOpen}
