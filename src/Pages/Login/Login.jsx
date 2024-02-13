@@ -13,21 +13,25 @@ import Lottie from "lottie-react";
 import animation from "../../assets/lottie/parcelDeliver.json";
 import toast from "react-hot-toast";
 import { getAccessToken, saveUserData } from "../../Api/Auth";
+import loginPageBg from "../../assets/image/loginPageBg.jpg";
+import bgimg from "../../assets/image/bg-footer.jpg";
+import Logo from "../../Components/Shared/Logo";
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const [demoEmail, setDemoEmail] = useState('')
-  const [demoPassword, setDemoPassword] = useState('')
+  const [demoEmail, setDemoEmail] = useState("");
+  const [demoPassword, setDemoPassword] = useState("");
   const { signIn, signInWithGoogle, logOut } = useAuth();
   const {
     register,
     formState: { errors },
-    handleSubmit, reset
+    handleSubmit,
+    reset,
   } = useForm();
   const navigate = useNavigate();
   const loc = useLocation();
 
   useEffect(() => {
-    loadCaptchaEnginge(6);
+    loadCaptchaEnginge(6,"white", "#D1A054");
   }, []);
 
   const onSubmit = async (data) => {
@@ -76,19 +80,29 @@ const Login = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${"https://getpaidstock.com/tmp/[GetPaidStock.com]-656108bc03856.jpg"})`,
+        backgroundImage: `url(${loginPageBg})`,
       }}
-      className="min-h-screen bg-cover bg-no-repeat bg-fixed bg-center flex justify-center items-center overflow-hidden">
-      <div className="md:w-[80%] mx-auto min-h-[600px] bg-slate-600/70 rounded-xl backdrop-blur shadow-[10px_10px_10px_10px_rgba(0,0,0,0.25)] my-20">
+      className="min-h-screen bg-cover bg-no-repeat bg-fixed bg-center bg-black/30 bg-blend-overlay flex justify-center items-center overflow-hidden">
+      <div className=" w-full mx-2 sm:mx-5 md:mx-14 md:max-w-[700px] lg:max-w-[90%] xl:max-w-[80%] 2xl:max-w-[1200px] lg:mx-10 bg-slate-600/70 rounded-xl backdrop-blur shadow-[10px_10px_10px_10px_rgba(0,0,0,0.4)] my-10 lg:my-12">
+        <div
+          style={{ backgroundImage: `url(${bgimg})` }}
+          className="bg-contain bg-center bg-blend-overlay flex  px-4 py-1 shadow-[0px_2px_3px_0px_rgba(249,115,22)] rounded-lg justify-center sm:justify-between items-center -mt-5 lg:-mt-8 bg-black bg-opacity-80 mx-5">
+          <Logo />
+          <h2 className="hidden sm:block text-2xl md:text-3xl text-gray-100  font-Black-Ops-One text-center">
+            Login
+          </h2>
+        </div>
         <div
           className={
-            "flex flex-col-reverse lg:flex-row w-[90%] mx-auto gap-5 justify-between items-center"
+            "lg:flex mx-auto px-5 sm:px-10 lg:px-5 xl:px-10 lg:gap-5 lg:justify-between lg:items-center"
           }>
-          <div className="w-11/12 lg:w-3/5 xl:w-1/2  my-16">
-            <h2 className="text-4xl font-bold text-center mb-5">Log In</h2>
+          <div className="my-5 flex-1">
+            <h2 className="  sm:hidden  text-2xl md:text-3xl  text-gray-100  font-Black-Ops-One text-center tracking-[2px]">
+              Login
+            </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="w-full mb-5">
-                <label className="text-xl font-medium ">
+              <div className="w-full mb-2">
+                <label className="text-white font-medium">
                   {" "}
                   Email <span className="text-red-500">*</span>
                 </label>
@@ -97,14 +111,14 @@ const Login = () => {
                   {...register("email", { required: true })}
                   placeholder="Email"
                   defaultValue={demoEmail}
-                  className=" h-14 w-full mt-2  rounded-[8px]  bg-white px-4  outline-none"
+                  className="h-11 w-full mt-1 rounded-[5px]  bg-white px-4  outline-none"
                 />
                 {errors.email?.type === "required" && (
                   <p className="text-red-500">email is required</p>
                 )}
               </div>
-              <div className="w-full mb-5 relative">
-                <label className="text-xl  font-medium ">
+              <div className="w-full mb-2 relative">
+                <label className="text-white font-medium ">
                   {" "}
                   Password <span className="text-red-500">*</span>
                 </label>
@@ -113,11 +127,11 @@ const Login = () => {
                   {...register("password", { required: true, minLength: 6 })}
                   placeholder="Enter your password"
                   defaultValue={demoPassword}
-                  className=" h-14 w-full mt-2  rounded-[8px]  bg-white px-4  outline-none"
+                  className=" h-11 w-full mt-1 rounded-[5px] bg-white px-4  outline-none"
                 />
                 <div
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute top-[48px] right-5 cursor-pointer">
+                  className="absolute top-[35px] right-2 cursor-pointer">
                   {!showPass ? (
                     <IoMdEye size={32} />
                   ) : (
@@ -129,15 +143,15 @@ const Login = () => {
                 )}
               </div>
 
-              <div className="w-full">
-                <LoadCanvasTemplate />
+              <div className="w-max border bg-white p-1 rounded">
+                <LoadCanvasTemplate reloadColor="green" />
               </div>
               <div className="w-full">
                 <input
                   type="text"
                   {...register("captchaInput", { required: true })}
                   placeholder="Type the Captcha above"
-                  className=" h-14  w-full mt-1 rounded-[8px] bg-white px-4 outline-none"
+                  className="h-11  w-full mt-1 rounded-[5px] bg-white px-4 outline-none"
                 />
                 {errors.captchaInput?.type === "required" && (
                   <p className="text-red-500">Captcha validation is required</p>
@@ -174,34 +188,44 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="lg:w-1/2">
+          <div className="mb-5 lg:mb-0 flex-1">
             <div className="border rounded-lg p-3 text-center">
-              <h3 className="text-xl font-medium text-[#D1A054] my-2">Demo Acounts</h3>
-              <div className="flex justify-center gap-5">
-                <button onClick={()=>{
-                    reset()
-                    setDemoEmail('sohag@gmail.com')
-                    setDemoPassword('@User123')
-                }} className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
+              <h3 className="text-xl font-medium text-[#D1A054] my-2">
+                Demo Acounts
+              </h3>
+              <div className="flex justify-center gap-5 ">
+                <button
+                  onClick={() => {
+                    reset();
+                    setDemoEmail("sohag@gmail.com");
+                    setDemoPassword("@User123");
+                  }}
+                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
                   User
                 </button>
-                <button onClick={()=>{               
-                    reset()
-                    setDemoEmail('abulhashem@gmail.com')
-                    setDemoPassword('@Deliveryman123')
-                }} className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
+                <button
+                  onClick={() => {
+                    reset();
+                    setDemoEmail("abulhashem@gmail.com");
+                    setDemoPassword("@Deliveryman123");
+                  }}
+                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
                   Delivery Man
                 </button>
-                <button onClick={()=>{
-                    reset()
-                    setDemoEmail('ohidursohag@gmail.com')
-                    setDemoPassword('@Admin123')
-                }} className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
+                <button
+                  onClick={() => {
+                    reset();
+                    setDemoEmail("ohidursohag@gmail.com");
+                    setDemoPassword("@Admin123");
+                  }}
+                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
                   Admin
                 </button>
               </div>
+            </div >
+            <div className="hidden  lg:flex lg:flex-col justify-between">
+              <Lottie animationData={animation} loop={true} />
             </div>
-            <Lottie animationData={animation} loop={true} />
           </div>
         </div>
       </div>

@@ -33,8 +33,8 @@ const SideNavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
         <div>
           {user && (
             <div className="my-5">
-              <figure className="rounded-full w-16 mx-auto overflow-hidden ring ring-orange-500">
-                <img src={user.photoURL} alt="" />
+              <figure className="rounded-full w-14 h-14 mx-auto overflow-hidden ring bg-gray-100 ring-orange-500">
+                <img className="object-cover w-14 h-14 object-center" src={user.photoURL} alt="" />
               </figure>
               <p className="text-lg text-center px-2 font-medium text-orange-400">
                 {user?.displayName.slice(0, 16)}
