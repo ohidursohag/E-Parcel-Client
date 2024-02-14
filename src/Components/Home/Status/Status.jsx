@@ -1,48 +1,43 @@
-import CountUp from "react-countup";
+import PropTypes from "prop-types";
+import StatusCard from "../../Cards/StatusCard";
+import {  FaUsers } from "react-icons/fa6";
+import { IoCheckbox } from "react-icons/io5";
+import Container from "../../Shared/Container";
+import { BsBoxSeamFill } from "react-icons/bs";
 
 const Status = ({ allBookings }) => {
-  //   console.log(allBookings);
+  const status = allBookings?.data;
   return (
-    <>
-      <div className="flex w-max mx-auto mt-10 flex-col sm:flex-row text-center justify-center items-center divide-orange-500 divide-y-8 sm:divide-x-8 sm:divide-y-0 ">
-         <div className="p-5 w-full h-full">
-         <div className="font-bold text-orange-500 text-4xl sm:text-5xl lg:text-6xl font-railway mb-5 text-center ">
-              <CountUp
-                end={allBookings?.data?.totalParcelBooked}
-                duration={3}
-              />
-              +
-            </div>
-            <h3 className="text-xl  lg:text-2xl font-bold">Total Parcel Booked</h3>
-         </div>
-    
-         <div className="py-5 md:px-10 sm:py-0 w-full h-full">
-         <div className="font-bold text-orange-500 text-4xl sm:text-5xl lg:text-6xl font-railway mb-5 text-center ">
-              <CountUp
-                end={allBookings?.data?.totalDelivered}
-                duration={3}
-              />
-              +
-            </div>
-            <h3 className="text-xl  lg:text-2xl font-bold">Total Parcel Delivered</h3>
-         </div>
-         
-         <div className="p-5 w-full h-full">
-         <div className="font-bold text-orange-500 text-4xl sm:text-5xl lg:text-6xl font-railway mb-5 text-center ">
-              <CountUp
-                end={allBookings?.data?.userCount}
-                duration={3}
-              />
-              +
-            </div>
-            <h3 className="text-xl  lg:text-2xl font-bold">Total User</h3>
-         </div>
-         
+    <Container>
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-5 mb-10">
+        <StatusCard
+          boxShadow={"shadow-green-500/60 "}
+          className={
+            "bg-gradient-to-tr  from-green-600 to-green-400 text-white"
+          }
+          title={"Total User"}
+          value={status?.userCount}>
+            <FaUsers className='w-8 h-8 text-white' />
+          </StatusCard>
+        <StatusCard
+          boxShadow={"shadow-orange-500/60"}
+          className={
+            "bg-gradient-to-tr  from-orange-600 to-orange-400 text-white"
+          }
+          title={"Total Parcel Booked"}
+          value={status?.totalParcelBooked}>
+            <BsBoxSeamFill  className='w-8 h-8 text-white'/>
+          </StatusCard>
+        <StatusCard
+          boxShadow={"shadow-blue-500/60"}
+          className={"bg-gradient-to-tr  from-blue-600 to-blue-400 text-white"}
+          title={"Total Parcel Delivered"}
+          value={status?.totalDelivered}><IoCheckbox className='w-8 h-8 text-white' /></StatusCard>
       </div>
-    </>
+    </Container>
   );
 };
-import PropTypes from "prop-types";
+
 Status.propTypes = {
   allBookings: PropTypes.object,
 };

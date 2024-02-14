@@ -1,4 +1,4 @@
-// eslint-disable-next-line react/prop-types
+
 const HeaderStatusBox = ({ children, className, value, statusName,boxShadow }) => {
   return (
     <div className={`relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-lg ${boxShadow}`}>
@@ -16,5 +16,13 @@ const HeaderStatusBox = ({ children, className, value, statusName,boxShadow }) =
       </div>
     </div>
   );
+};
+import PropTypes from 'prop-types';
+HeaderStatusBox.propTypes = {
+   children: PropTypes.node,
+   className: PropTypes.string,
+   value: PropTypes.number,
+   statusName: PropTypes.string,
+   boxShadow: PropTypes.string, 
 };
 export default HeaderStatusBox;

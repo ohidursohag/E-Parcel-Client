@@ -23,12 +23,11 @@ const Home = () => {
   return (
     <div>
       <Banner />
+          <Status allBookings={allBookings} />
       <Container>
         <div className="my-16">
-          {/* <OurFeatures /> */}
           <SectionTitle>Why E-Parcel?</SectionTitle>
           <WhyEParcel />
-          <Status allBookings={allBookings} />
         </div>
         <div className="my-16">
           <OurStory />

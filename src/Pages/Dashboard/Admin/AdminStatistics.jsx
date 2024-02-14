@@ -4,9 +4,10 @@ import ApexCharts from 'apexcharts'
 import useAdminState from "../../../Hooks/useAdminState";
 import { useEffect } from "react";
 import HeaderStatusBox from "../../../Components/Shared/Utilities/HeaderStatusBox";
-import { FaBox, FaUsers } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa6";
 import { MdDeliveryDining } from "react-icons/md";
 import { IoCheckbox } from "react-icons/io5";
+import { BsBoxSeamFill } from "react-icons/bs";
 
 const AdminStatistics = () => {
     
@@ -131,7 +132,7 @@ const {adminStatData,isLoading} = useAdminState()
                     </HeaderStatusBox>
                     <HeaderStatusBox
                         boxShadow={'shadow-blue-500/60'}
-                        className={'bg-gradient-to-tr  from-blue-600 to-blue-400 text-white '}
+                        className={'bg-gradient-to-tr  from-blue-600 to-blue-400 text-white'}
                         value={adminStatData?.totalDeliveryMan}
                         statusName={'Total Delivery Man'}
                     >
@@ -143,7 +144,7 @@ const {adminStatData,isLoading} = useAdminState()
                         value={adminStatData?.totalParcelBooked}
                         statusName={'Total Parcel Booked'}
                     >
-                        <FaBox className='w-8 h-8 text-white' />
+                        <BsBoxSeamFill  className='w-8 h-8 text-white' />
                     </HeaderStatusBox>
                     <HeaderStatusBox
                         boxShadow={'shadow-green-500/60'}

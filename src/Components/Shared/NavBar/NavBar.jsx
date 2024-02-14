@@ -11,28 +11,30 @@ import useAuth from "../../../Hooks/useAuth";
 import { TbLogin2, TbLogout } from "react-icons/tb";
 const NavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
   const refWraper = useClickOutSide(setSideBarIsOpen);
-  const { user, logOut,  isLoading } = useAuth();
+  const { user, logOut } = useAuth();
   return (
     <div
       style={{ backgroundImage: `url(${navBg})` }}
       className="bg-contain bg-center bg-blend-overlay w-full fixed z-50  bg-black bg-opacity-[80%] shadow-[0px_2px_5px_0px_rgba(249,115,22)] ">
       <Container>
-        <div className="flex justify-between items-center relative py-2">
+        <div className="flex justify-between items-center relative py-2 ">
           <Logo />
           <div className="hidden items-center gap-5 lg:flex">
             <NavLinks />
           </div>
           <div className="flex items-center gap-3">
-            <button className="text-orange-300   font-semibold text-lg ">
+            <button className="text-orange-300 font-semibold text-lg hover:scale-110 duration-300 hover:text-orange-500">
               <IoNotifications size={30} />
             </button>
-            {!user && isLoading?(
+            {!user ? (
               <Link
                 to={"/login"}
-                className="text-orange-300   font-semibold text-lg ">
+                className="text-orange-300 font-semibold hover:scale-110 duration-300 hover:text-orange-500">
                 <TbLogin2 size={30} />
               </Link>
-            ):''}
+            ) : (
+              ""
+            )}
             <div ref={refWraper} className="">
               <DropDown
                 sideBarIsOpen={sideBarIsOpen}
@@ -43,7 +45,7 @@ const NavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
             {user && (
               <button
                 onClick={logOut}
-                className="text-orange-300   font-semibold text-lg ">
+                className="text-orange-300 font-semibold hover:scale-110 duration-300 hover:text-orange-500">
                 <TbLogout size={30} />
               </button>
             )}
