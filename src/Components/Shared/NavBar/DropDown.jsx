@@ -11,10 +11,10 @@ const DropDown = ({ sideBarIsOpen, setSideBarIsOpen }) => {
     <>
       <div
         onClick={() => setSideBarIsOpen(!sideBarIsOpen)}
-        className={`p-1 ${user?'sm:px-2':'sm:p-2 '}   bg-orange-500  flex  items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition`}
+        className={`p-1 ${user?'sm:px-2 bg-orange-300 text-white':'sm:p-2 text-orange-300'}     flex  items-center gap-2 rounded-full cursor-pointer hover:shadow-md transition`}
       >
 
-        <AiOutlineBars size={25} color="white" />
+        <AiOutlineBars size={30} color="" />
         {user ? (
           <div className="rounded-full w-[30px] h-[30px] bg-white hidden sm:block">
             {/* Avatar */}
