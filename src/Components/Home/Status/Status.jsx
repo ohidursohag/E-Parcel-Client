@@ -11,9 +11,9 @@ const Status = ({ allBookings }) => {
     <Container>
       <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-5 mb-10">
         <StatusCard
-          boxShadow={"shadow-green-500/60 "}
+          boxShadow={"shadow-blue-500/60 "}
           className={
-            "bg-gradient-to-tr  from-green-600 to-green-400 text-white"
+            "bg-gradient-to-tr from-blue-600 to-blue-400  text-white"
           }
           title={"Total User"}
           value={status?.userCount}>
@@ -29,8 +29,8 @@ const Status = ({ allBookings }) => {
             <BsBoxSeamFill  className='w-8 h-8 text-white'/>
           </StatusCard>
         <StatusCard
-          boxShadow={"shadow-blue-500/60"}
-          className={"bg-gradient-to-tr  from-blue-600 to-blue-400 text-white"}
+          boxShadow={"shadow-green-500/60"}
+          className={"bg-gradient-to-tr from-green-600 to-green-400  text-white"}
           title={"Total Parcel Delivered"}
           value={status?.totalDelivered}><IoCheckbox className='w-8 h-8 text-white' /></StatusCard>
       </div>

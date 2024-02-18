@@ -12,7 +12,7 @@ const WhyEparcelCard = ({title,description,icon:Icon}) => {
               <div className="bg-orange-500 px-5 py-1 rounded-tr-full rounded-bl-full text-white rounded-tl-md"/>
             </div>
             {/* Front side */}
-            <div className="absolute w-full rounded-lg h-full bg-orange-50 duration-700 top-0 left-0 
+            <div className="absolute w-full rounded-lg h-full bg-orange-50 duration-500 top-0 left-0 
             group-hover:w-[150px] group-hover:h-[150px] 
             group-hover:left-1/2 group-hover:right-1/2 lg:group-hover:top-1/2 lg:group-hover:bottom-1/2 
             group-hover:-translate-x-1/2 lg:group-hover:-translate-x-0 lg:group-hover:-translate-y-1/2 

@@ -5,18 +5,6 @@
 ### Client Side Repository - [E-Parcel-Client](https://github.com/ohidursohag/E-Parcel-Client)
 ### Server Side Repository - [E-Parcel-Server](https://github.com/ohidursohag/E-Parcel-Server)
 
-## 
-### Admin :
-email : ohidursohag@gmail.com 
-
-password : @@Sohag9595
-### Delivery Man : 
-email : abulhashem@gmail.com 
-
-password : @@Sohag9595
-##
-
-
 ## All the packages used in this project:
 - [tailwindcss](https://tailwindcss.com/)
 - [daisyui](https://daisyui.com/)

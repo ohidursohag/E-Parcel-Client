@@ -9,7 +9,7 @@ const StatusCard = ({ children, className, value, title, boxShadow }) => {
         {children}
       </div>
       <div className="py-5 px-5  flex justify-between items-center">
-        <p className="block antialiased mt-8 text-xl font-semibold leading-normal  text-gray-500">
+        <p className="block antialiased mt-8 text-2xl font-semibold leading-normal  text-gray-500">
           {title}
         </p>
         <div className="block antialiased tracking-normal text-orange-500 text-6xl font-semibold leading-snug text-blue-gray-900">

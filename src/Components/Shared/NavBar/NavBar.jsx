@@ -29,7 +29,7 @@ const NavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
             {!user ? (
               <Link
                 to={"/login"}
-                className="text-orange-300 font-semibold hover:scale-110 duration-300 hover:text-orange-500">
+                className="text-orange-300 font-semibold hover:scale-110 duration-300 hover:text-orange-500 hidden sm:block">
                 <TbLogin2 size={30} />
               </Link>
             ) : (
@@ -45,7 +45,7 @@ const NavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
             {user && (
               <button
                 onClick={logOut}
-                className="text-orange-300 font-semibold hover:scale-110 duration-300 hover:text-orange-500">
+                className="text-orange-300 font-semibold hover:scale-110 duration-300 hover:text-orange-500 hidden sm:block">
                 <TbLogout size={30} />
               </button>
             )}
