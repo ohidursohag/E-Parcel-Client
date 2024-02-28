@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import useAuth from "../../../Hooks/useAuth";
-import useUserRole from "../../../Hooks/useUserRole";
+
 import MenuItem from "../Utilities/MenuItem";
 import { FaHome } from "react-icons/fa";
 import { BiSolidContact } from "react-icons/bi";
@@ -13,28 +13,28 @@ import { TbLogout, TbLogin } from "react-icons/tb";
 import { BsInfoSquareFill } from "react-icons/bs";
 import bgImg from "../../../assets/image/bg-footer.jpg";
 import { IoSettingsSharp } from "react-icons/io5";
-// import useClickOutSide from "../../../Hooks/useClickOutSide";
+import useGetCurrentUser from "../../../Hooks/useGetCurrentUser";
 // eslint-disable-next-line no-unused-vars
-const SideNavBar = ({ sideBarIsOpen, setSideBarIsOpen }) => {
+const SideNavBar = ({ sideBarIsOpen}) => {
   const { user, logOut } = useAuth();
-  const { role } = useUserRole();
-  //   const refWraper = useClickOutSide(setSideBarIsOpen);
+  const {currentUser, role} = useGetCurrentUser()
+
 
   return (
     <div
       style={{ backgroundImage: `url(${bgImg})` }}
-      className={`fixed top-[52px] lg:top-[71px] bg-contain bg-center left-0 bg-blend-overlay bg-black bg-opacity-[80%] shadow-[2px_0px_3px_0px_rgba(249,115,22)]  duration-300 h-[calc(100vh-50px)] lg:h-[calc(100vh-71px)] z-40 
+      className={`fixed top-[52px] lg:top-[71px] bg-contain bg-center left-0 bg-blend-overlay bg-black bg-opacity-[80%] shadow-[2px_0px_3px_0px_rgba(249,115,22)] lg:hidden duration-300 h-[calc(100vh-50px)] lg:h-[calc(100vh-71px)] z-40 
       ${sideBarIsOpen ? "w-[220px]" : "w-0"}`}
     >
       <div
-        // ref={refWraper}
+
         className=" h-full flex flex-col justify-between overflow-hidden text-sm"
       >
         <div>
           {user && (
             <div className="my-5">
               <figure className="rounded-full w-14 h-14 mx-auto overflow-hidden ring bg-gray-100 ring-orange-500">
-                <img className="object-cover w-14 h-14 object-center" src={user.photoURL} alt="" />
+                <img className="object-cover w-14 h-14 object-center" src={currentUser?.image} alt="" />
               </figure>
               <p className="text-lg text-center px-2 font-medium text-orange-400">
                 {user?.displayName.slice(0, 16)}

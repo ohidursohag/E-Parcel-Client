@@ -14,6 +14,7 @@ export const getAdminStatisticsData = async () => {
 
 // get Users data by email
 export const getUserDatabyEmail = async (email) => {
+   console.log(email)
    const { data } = await axiosSecure.get(`/get-user-data/${email}`);
    return data;
 }

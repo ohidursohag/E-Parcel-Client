@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import useUserRole from "../../../Hooks/useUserRole";
 import useAuth from "../../../Hooks/useAuth";
+import useGetCurrentUser from "../../../Hooks/useGetCurrentUser";
 // import { IoNotifications } from "react-icons/io5";
 
 const NavLinks = () => {
-  const { role } = useUserRole();
+  const { role} = useGetCurrentUser()
   const { user } = useAuth();
   const { pathname } = useLocation();
 //   console.log(pathname);

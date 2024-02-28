@@ -1,20 +1,22 @@
 import { Outlet, useNavigation } from "react-router-dom";
-import NavBar from "../Components/Shared/NavBar/NavBar";
 import LoadingAnimation from "../Components/Shared/LoadingAnimation/LoadingAnimation";
 import siteBg from "../assets/image/bg.png";
-import Footer from "../Components/Shared/Footer/Footer";
-import SideNavBar from "../Components/Shared/SideNavBar/SideNavBar";
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 
+const SideNavBar = lazy(() =>
+  import("../Components/Shared/SideNavBar/SideNavBar")
+);
+import NavBar from "../Components/Shared/NavBar/NavBar";
+import useLazyLoading from "../Hooks/useLazyLoading";
+const Footer = lazy(() => import("../Components/Shared/Footer/Footer"));
 const MainLayout = () => {
-    const [sideBarIsOpen, setSideBarIsOpen] = useState(false);
-  
+  const [sideBarIsOpen, setSideBarIsOpen] = useState(false);
+  const bgLoaded = useLazyLoading(siteBg);
   const navigation = useNavigation();
   return (
     <div
-      style={{ backgroundImage: `url(${siteBg})` }}
-      className="font-ubuntu bg-[#FFF3DF]  bg-no-repeat"
-    >
+      style={{ backgroundImage: `url(${bgLoaded || ""})` }}
+      className="font-ubuntu bg-[#FFF3DF]  bg-no-repeat max-w-[2000px] mx-auto relative">
       <NavBar
         sideBarIsOpen={sideBarIsOpen}
         setSideBarIsOpen={setSideBarIsOpen}
@@ -22,12 +24,16 @@ const MainLayout = () => {
       <div className="min-h-[calc(100vh-107px)]">
         {navigation.state === "loading" ? <LoadingAnimation /> : <Outlet />}
       </div>
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
       <div>
-        <SideNavBar
-          sideBarIsOpen={sideBarIsOpen}
-          setSideBarIsOpen={setSideBarIsOpen}
-        />
+        <Suspense>
+          <SideNavBar
+            sideBarIsOpen={sideBarIsOpen}
+            setSideBarIsOpen={setSideBarIsOpen}
+          />
+        </Suspense>
       </div>
     </div>
   );

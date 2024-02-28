@@ -2,11 +2,11 @@ import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import LoadingAnimation from "../Components/Shared/LoadingAnimation/LoadingAnimation";
 import useAuth from "../Hooks/useAuth";
-import useUserRole from "../Hooks/useUserRole";
+import useGetCurrentUser from "../Hooks/useGetCurrentUser";
 
 const UserRoute = ({ children }) => {
    const { user, loading } = useAuth();
-   const { role, isLoading } = useUserRole();
+   const {isLoading, role} = useGetCurrentUser()
 
 
    if (loading || isLoading) {

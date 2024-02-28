@@ -16,11 +16,13 @@ import { getAccessToken, saveUserData } from "../../Api/Auth";
 import loginPageBg from "../../assets/image/loginPageBg.jpg";
 import bgimg from "../../assets/image/bg-footer.jpg";
 import Logo from "../../Components/Shared/Logo";
+// import useLazyLoading from "../../Hooks/useLazyLoading";
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const [demoEmail, setDemoEmail] = useState("");
   const [demoPassword, setDemoPassword] = useState("");
   const { signIn, signInWithGoogle, logOut } = useAuth();
+  // const bgLoded = useLazyLoading(loginPageBg);
   const {
     register,
     formState: { errors },
@@ -31,7 +33,7 @@ const Login = () => {
   const loc = useLocation();
 
   useEffect(() => {
-    loadCaptchaEnginge(6,"white", "#D1A054");
+    loadCaptchaEnginge(6, "white", "#D1A054");
   }, []);
 
   const onSubmit = async (data) => {
@@ -80,10 +82,11 @@ const Login = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${loginPageBg})`,
+        backgroundImage: `url(${loginPageBg })`,
       }}
       className="min-h-screen bg-cover bg-no-repeat bg-fixed bg-center bg-black/30 bg-blend-overlay flex justify-center items-center overflow-hidden">
       <div className=" w-full mx-2 sm:mx-5 md:mx-14 md:max-w-[700px] lg:max-w-[90%] xl:max-w-[80%] 2xl:max-w-[1200px] lg:mx-10 bg-slate-600/70 rounded-xl backdrop-blur shadow-[10px_10px_10px_10px_rgba(0,0,0,0.4)] my-10 lg:my-12">
+        {/* Title bar */}
         <div
           style={{ backgroundImage: `url(${bgimg})` }}
           className="bg-contain bg-center bg-blend-overlay flex  px-4 py-1 shadow-[0px_2px_3px_0px_rgba(249,115,22)] rounded-lg justify-center sm:justify-between items-center -mt-5 lg:-mt-8 bg-black bg-opacity-80 mx-5">
@@ -92,14 +95,52 @@ const Login = () => {
             Login
           </h2>
         </div>
+        {/*  */}
         <div
           className={
             "lg:flex mx-auto px-5 sm:px-10 lg:px-5 xl:px-10 lg:gap-5 lg:justify-between lg:items-center"
           }>
+          {/* From Contents */}
           <div className="my-5 flex-1">
             <h2 className="  sm:hidden  text-2xl md:text-3xl  text-gray-100  font-Black-Ops-One text-center tracking-[2px]">
               Login
             </h2>
+            {/* Demo Acount */}
+            <div className="border rounded-lg p-2 text-center my-3">
+              <h3 className="text-xl font-medium text-[#D1A054] mb-2">
+                Demo Acounts
+              </h3>
+              <div className="flex justify-center gap-5 ">
+                <button
+                  onClick={() => {
+                    reset();
+                    setDemoEmail("sohag@gmail.com");
+                    setDemoPassword("@User123");
+                  }}
+                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
+                  User
+                </button>
+                <button
+                  onClick={() => {
+                    reset();
+                    setDemoEmail("abulhashem@gmail.com");
+                    setDemoPassword("@Deliveryman123");
+                  }}
+                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
+                  Delivery Man
+                </button>
+                <button
+                  onClick={() => {
+                    reset();
+                    setDemoEmail("ohidursohag@gmail.com");
+                    setDemoPassword("@Admin123");
+                  }}
+                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
+                  Admin
+                </button>
+              </div>
+            </div>
+            {/* Login Form */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="w-full mb-2">
                 <label className="text-white font-medium">
@@ -187,42 +228,8 @@ const Login = () => {
               </span>
             </button>
           </div>
-
+          {/* Animation */}
           <div className="mb-5 lg:mb-0 flex-1">
-            <div className="border rounded-lg p-3 text-center">
-              <h3 className="text-xl font-medium text-[#D1A054] my-2">
-                Demo Acounts
-              </h3>
-              <div className="flex justify-center gap-5 ">
-                <button
-                  onClick={() => {
-                    reset();
-                    setDemoEmail("sohag@gmail.com");
-                    setDemoPassword("@User123");
-                  }}
-                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
-                  User
-                </button>
-                <button
-                  onClick={() => {
-                    reset();
-                    setDemoEmail("abulhashem@gmail.com");
-                    setDemoPassword("@Deliveryman123");
-                  }}
-                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
-                  Delivery Man
-                </button>
-                <button
-                  onClick={() => {
-                    reset();
-                    setDemoEmail("ohidursohag@gmail.com");
-                    setDemoPassword("@Admin123");
-                  }}
-                  className="btn btn-ghost btn-sm text-base bg-[#D1A054] text-white">
-                  Admin
-                </button>
-              </div>
-            </div >
             <div className="hidden  lg:flex lg:flex-col justify-between">
               <Lottie animationData={animation} loop={true} />
             </div>

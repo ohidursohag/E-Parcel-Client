@@ -1,12 +1,12 @@
 
 import { Helmet } from 'react-helmet-async'
 import useAuth from '../../../Hooks/useAuth'
-import useUserRole from '../../../Hooks/useUserRole'
 import { Link } from 'react-router-dom'
+import useGetCurrentUser from '../../../Hooks/useGetCurrentUser'
 
 const Profile = () => {
   const { user } = useAuth()
-  const { role } = useUserRole()
+  const { role} = useGetCurrentUser()
   // console.log(user)
 
   return (
