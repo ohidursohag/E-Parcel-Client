@@ -8,6 +8,7 @@ const SideNavBar = lazy(() =>
 );
 import NavBar from "../Components/Shared/NavBar/NavBar";
 import useLazyLoading from "../Hooks/useLazyLoading";
+import GotoTop from "../Components/Shared/GotoTop/GotoTop";
 const Footer = lazy(() => import("../Components/Shared/Footer/Footer"));
 const MainLayout = () => {
   const [sideBarIsOpen, setSideBarIsOpen] = useState(false);
@@ -24,6 +25,7 @@ const MainLayout = () => {
       <div className="min-h-[calc(100vh-107px)]">
         {navigation.state === "loading" ? <LoadingAnimation /> : <Outlet />}
       </div>
+          <GotoTop/>
       <Suspense>
         <Footer />
       </Suspense>
